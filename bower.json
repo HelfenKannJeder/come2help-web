@@ -1,0 +1,21 @@
+{
+  "name": "come2help",
+  "version": "0.0.1",
+  "authors": [
+    "Valentin Zickner <zickner@querformatik.de>"
+  ],
+  "main": "index.html",
+  "license": "GPL",
+  "homepage": "http://come2.help/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular-route": "~1.4.5"
+  }
+}
