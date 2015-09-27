@@ -24,3 +24,6 @@ LICENSE file.
 6. Run the index.html in a browser of your choice.
   Be careful about cross-site script detection, since the server is not running at the same domain as your client.
   Maybe you have to use a proxy server like nginx.
+  
+7. Start a python Webserver with:
+  <pre>python -m SimpleHTTPServer</pre>
