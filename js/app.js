@@ -1,8 +1,10 @@
 var geoTodoApp = angular.module('geoTodoApp', [
     'ngRoute',
     'geoTodoController',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'pascalprecht.translate'
 ]);
+var app = geoTodoApp;
 
 geoTodoApp.config(['$routeProvider',
     function ($routeProvider) {

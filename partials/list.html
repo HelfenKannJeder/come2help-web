@@ -1,14 +1,12 @@
 <table class="table">
     <tr>
-        <th>Beschreibung</th>
-        <th>Ort</th>
-        <th>Benötigt</th>
+        <th>{{ 'Name' | translate }}</th>
+        <th>{{ 'Location' | translate }}</th>
         <th>&nbsp;</th>
     </tr>
     <tr ng-repeat="location in locations">
         <td>{{location.name}}</td>
         <td>{{location.location}}</td>
-        <td>&nbsp;</td>
-        <td><a href="#/detail/{{location.id}}" class="btn btn-primary"><i class="icon-show"></i> Anzeigen</a></td>
+        <td><a href="#/detail/{{location.id}}" class="btn btn-primary"><i class="icon-show"></i> {{ 'Show' | translate }}</a></td>
     </tr>
 </table>
