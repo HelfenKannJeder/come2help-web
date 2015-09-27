@@ -1,25 +1,7 @@
-var geoTodoController = angular.module('geoTodoController', []);
+var geoTodoController = angular.module('geoTodoController', ['ngResource']);
 
-geoTodoController.factory('Locations', function () {
-    return [
-        {
-            'id': 1,
-            'name': 'Sandsäcke füllen',
-            'latitude': 49.1232,
-            'longitude': 8,
-            'location': 'Schlossplatz'
-        },
-        {
-            'id': 2,
-            'name': 'Transport',
-            'latitude': 48.1232,
-            'longitude': 8,
-            'location': 'Rheinbad',
-            'options': {
-                'title': 'Transport im Rheinbad',
-            }
-        }
-    ];
+geoTodoController.factory('Locations', function ($resource) {
+    return $resource("api/locations/:id");
 });
 
 geoTodoController.service('geocoder', function () {
@@ -42,7 +24,10 @@ geoTodoController.service('geocoder', function () {
 
 geoTodoController.controller('MapCtrl', ['$scope', 'Locations', function ($scope, Locations) {
     $scope.map = {center: {latitude: 48.1232, longitude: 8}, zoom: 8};
-    $scope.locations = Locations;
+
+    Locations.query(function(data) {
+        $scope.locations = data;
+    });
 
     $scope.openDetails = function (id) {
         location.href = '#/detail/' + id;
@@ -50,7 +35,9 @@ geoTodoController.controller('MapCtrl', ['$scope', 'Locations', function ($scope
 }]);
 
 geoTodoController.controller('ListCtrl', ['$scope', 'Locations', function ($scope, Locations) {
-    $scope.locations = Locations;
+    Locations.query(function(data) {
+        $scope.locations = data;
+    });
 }]);
 
 geoTodoController.controller('DetailCtrl', ['$scope', 'Locations', '$routeParams', function ($scope, Locations, $routeParams) {
@@ -60,7 +47,7 @@ geoTodoController.controller('DetailCtrl', ['$scope', 'Locations', '$routeParams
 geoTodoController.controller('NewCtrl', ['$scope', 'Locations', 'geocoder', function ($scope, Locations, geocoder) {
     $scope.addNew = function () {
         var result = geocoder.geocode($scope.inputLocation, function (results) {
-            Locations.push({
+            Locations.save({
                 'id': Locations.length,
                 'name': $scope.inputName,
                 'location': $scope.inputLocation,
