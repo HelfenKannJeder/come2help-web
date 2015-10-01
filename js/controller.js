@@ -6,7 +6,7 @@ geoTodoController.factory('Locations', function ($resource) {
 
 geoTodoController.factory('Tasks', function ($resource) {
     return $resource("api/tasks/:id");
-})
+});
 
 geoTodoController.service('geocoder', function () {
     this.geocode = function (address, outerCallback) {
