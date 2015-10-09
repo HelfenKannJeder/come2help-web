@@ -27,3 +27,5 @@ LICENSE file.
   
 7. Start a python Webserver with:
   <pre>python -m SimpleHTTPServer</pre>
+  or
+  <pre>python3 -m http.server</pre>
