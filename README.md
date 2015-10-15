@@ -8,6 +8,10 @@ Possible scenarios are flooding or coordinating support for political refugees.
 This is only a Web-App. The REST API is not part of this repository. For usage please care about the
 LICENSE file.
 
+## Used Software and Tools
+
+<a href="http://browserstack.com/"><img src="http://helfenkannjeder.de/fileadmin/_processed_/csm_logo_072d30a442.png" alt="Browserstack" border="0" /></a>
+
 ## Setup
 
 1. Fork the repository for development. Implementations can be submitted by a Pull-Request.
