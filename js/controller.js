@@ -1,14 +1,14 @@
 angular.module('geoTodoController', ['ngResource']);
 
-angular.module('geoTodoController').factory('Locations', function ($resource) {
+angular.module('geoTodoController').factory('Locations', ['$resource', function ($resource) {
 	return $resource('api/locations/:id');
-});
+}]);
 
-angular.module('geoTodoController').factory('Tasks', function ($resource) {
+angular.module('geoTodoController').factory('Tasks', ['$resource', function ($resource) {
 	return $resource('api/tasks/:id');
-});
+}]);
 
-angular.module('geoTodoController').service('geocoder', function () {
+angular.module('geoTodoController').service('geocoder', [function () {
 	this.geocode = function (address, outerCallback) {
 		var geocoder = new google.maps.Geocoder();
 
@@ -24,7 +24,7 @@ angular.module('geoTodoController').service('geocoder', function () {
 			}
 		});
 	};
-});
+}]);
 
 angular.module('geoTodoController').controller('MapController', ['Locations', function (Locations) {
 	var vm = this;
