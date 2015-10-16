@@ -1,0 +1,27 @@
+{
+  "name": "come2help-webclient",
+  "version": "0.0.1",
+  "homepage": "http://come2.help/",
+  "bugs": {
+    "url": "https://github.com/HelfenKannJeder/come2help-web/issues"
+  },
+  "contributors": [
+    {
+      "name": "Valentin Zickner",
+      "email": "zickner@querformatik.de",
+      "name": "Peter Schuller",
+      "email": "ps@pzzz.de"
+    }
+  ],
+  "license" : "GPL-3.0",
+  "repository" :  {
+    "type" : "git",
+    "url" : "https://github.com/npm/npm.git"
+  },
+  "devDependencies": {
+    "closurecompiler": "^1.5.2",
+    "browserstack-webdriver": "^2.41.1",
+    "bower": "^1.6.3",
+    "node-sass": "^3.3.3"
+  }
+}

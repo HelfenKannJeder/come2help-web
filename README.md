@@ -22,14 +22,17 @@ LICENSE file.
 
 4. If you want to use the backend, also install come2help-server. See the tutorial in come2help-server.
 
-5. Use bower to install the dependencies:
+5. Install the development dependencies:
+<pre>npm install</pre>
+
+6. Use bower to install the dependencies:
 <pre>bower install</pre>
 
-6. Run the index.html in a browser of your choice.
+7. Run the index.html in a browser of your choice.
   Be careful about cross-site script detection, since the server is not running at the same domain as your client.
   Maybe you have to use a proxy server like nginx.
   
-7. Start a python Webserver with:
+8. Start a python Webserver with:
   <pre>python -m SimpleHTTPServer</pre>
   or
   <pre>python3 -m http.server</pre>
