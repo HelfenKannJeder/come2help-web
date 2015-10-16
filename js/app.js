@@ -10,19 +10,26 @@ angular.module('geoTodoApp').config(['$routeProvider',
 		$routeProvider.
 			when('/map', {
 				templateUrl: 'partials/map.html',
-				controller: 'MapController'
+				controller: 'MapController',
+				controllerAs: 'ctrl'
+
 			}).
 			when('/list', {
 				templateUrl: 'partials/list.html',
-				controller: 'ListController'
+				controller: 'ListController',
+				controllerAs: 'ctrl'
 			}).
 			when('/detail/:locationId', {
 				templateUrl: 'partials/detail.html',
-				controller: 'DetailController'
+				controller: 'DetailController',
+				controllerAs: 'ctrl'
+
 			}).
 			when('/new', {
 				templateUrl: 'partials/new.html',
-				controller: 'NewController'
+				controller: 'NewController',
+				controllerAs: 'ctrl'
+
 			}).
 			otherwise({
 				redirectTo: '/map'

@@ -11,8 +11,8 @@ angular.module('geoTodoController').factory('Tasks', function ($resource) {
 angular.module('geoTodoController').service('geocoder', function () {
 	this.geocode = function (address, outerCallback) {
 		var geocoder = new google.maps.Geocoder();
+
 		geocoder.geocode({'address': address}, function (results, status) {
-			$log(results);
 			if (status == google.maps.GeocoderStatus.OK) {
 				outerCallback({success: true, err: null, results: results});
 			} else {
@@ -26,8 +26,8 @@ angular.module('geoTodoController').service('geocoder', function () {
 	};
 });
 
-angular.module('geoTodoController').controller('MapController', ['$scope', 'Locations', function ($scope, Locations) {
-	var vm = $scope; // TODO: Should be this
+angular.module('geoTodoController').controller('MapController', ['Locations', function (Locations) {
+	var vm = this;
 
 	vm.map = {center: {latitude: 51.163333, longitude: 10.447778}, zoom: 6};
 
@@ -40,22 +40,22 @@ angular.module('geoTodoController').controller('MapController', ['$scope', 'Loca
 	};
 }]);
 
-angular.module('geoTodoController').controller('ListController', ['$scope', 'Locations', function ($scope, Locations) {
-	var vm = $scope; // TODO: Should be this
+angular.module('geoTodoController').controller('ListController', ['Locations', function (Locations) {
+	var vm = this;
 
 	Locations.query(function (data) {
 		vm.locations = data;
 	});
 }]);
 
-angular.module('geoTodoController').controller('DetailController', ['$scope', 'Locations', '$routeParams', function ($scope, Locations, $routeParams) {
-	var vm = $scope; // TODO: Should be this
+angular.module('geoTodoController').controller('DetailController', ['Locations', '$routeParams', function (Locations, $routeParams) {
+	var vm = this;
 
 	vm.locationId = $routeParams.locationId;
 }]);
 
-angular.module('geoTodoController').controller('NewController', ['$scope', 'Locations', 'Tasks', 'geocoder', function ($scope, Locations, Tasks, geocoder) {
-	var vm = $scope; // TODO: Should be this
+angular.module('geoTodoController').controller('NewController', ['Locations', 'Tasks', 'geocoder', function (Locations, Tasks, geocoder) {
+	var vm = this;
 
 	Tasks.query(function (data) {
 		vm.tasks = data;
@@ -72,8 +72,6 @@ angular.module('geoTodoController').controller('NewController', ['$scope', 'Loca
 
 			vm.inputName = '';
 			vm.inputLocation = '';
-
-			$log(results); //{success: true, err: undefined, results: {...} or {success:false, err: Error object, results: undefined}
 		});
 	};
 }]);
