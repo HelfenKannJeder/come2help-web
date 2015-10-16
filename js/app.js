@@ -10,24 +10,24 @@ angular.module('geoTodoApp').config(['$routeProvider',
 		$routeProvider.
 			when('/map', {
 				templateUrl: 'partials/map.html',
-				controller: 'MapCtrl'
+				controller: 'MapController'
 			}).
 			when('/list', {
 				templateUrl: 'partials/list.html',
-				controller: 'ListCtrl'
+				controller: 'ListController'
 			}).
 			when('/detail/:locationId', {
 				templateUrl: 'partials/detail.html',
-				controller: 'DetailCtrl'
+				controller: 'DetailController'
 			}).
 			when('/new', {
 				templateUrl: 'partials/new.html',
-				controller: 'NewCtrl'
+				controller: 'NewController'
 			}).
 			otherwise({
 				redirectTo: '/map'
 			});
 	}]);
 
-angular.module('geoTodoApp').controller('MenuCtrl', function ($scope) {
+angular.module('geoTodoApp').controller('MenuController', function ($scope) {
 });

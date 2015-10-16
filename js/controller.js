@@ -26,7 +26,7 @@ angular.module('geoTodoController').service('geocoder', function () {
 	};
 });
 
-angular.module('geoTodoController').controller('MapCtrl', ['$scope', 'Locations', function ($scope, Locations) {
+angular.module('geoTodoController').controller('MapController', ['$scope', 'Locations', function ($scope, Locations) {
 	$scope.map = {center: {latitude: 51.163333, longitude: 10.447778}, zoom: 6};
 
 	Locations.query(function (data) {
@@ -38,17 +38,17 @@ angular.module('geoTodoController').controller('MapCtrl', ['$scope', 'Locations'
 	};
 }]);
 
-angular.module('geoTodoController').controller('ListCtrl', ['$scope', 'Locations', function ($scope, Locations) {
+angular.module('geoTodoController').controller('ListController', ['$scope', 'Locations', function ($scope, Locations) {
 	Locations.query(function (data) {
 		$scope.locations = data;
 	});
 }]);
 
-angular.module('geoTodoController').controller('DetailCtrl', ['$scope', 'Locations', '$routeParams', function ($scope, Locations, $routeParams) {
+angular.module('geoTodoController').controller('DetailController', ['$scope', 'Locations', '$routeParams', function ($scope, Locations, $routeParams) {
 	$scope.locationId = $routeParams.locationId;
 }]);
 
-angular.module('geoTodoController').controller('NewCtrl', ['$scope', 'Locations', 'Tasks', 'geocoder',
+angular.module('geoTodoController').controller('NewController', ['$scope', 'Locations', 'Tasks', 'geocoder',
 	function ($scope, Locations, Tasks, geocoder) {
 		Tasks.query(function (data) {
 			$scope.tasks = data;
