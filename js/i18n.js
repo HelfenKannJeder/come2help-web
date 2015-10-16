@@ -1,4 +1,4 @@
-angular.module('geoTodoApp').config(['$translateProvider', function ($translateProvider) {
+angular.module('Come2HelpApp').config(['$translateProvider', function ($translateProvider) {
 	$translateProvider.translations('en', {
 		'Map': 'Map',
 		'List': 'List',
