@@ -1,12 +1,11 @@
-var geoTodoApp = angular.module('geoTodoApp', [
+angular.module('geoTodoApp', [
 	'ngRoute',
 	'geoTodoController',
 	'uiGmapgoogle-maps',
 	'pascalprecht.translate'
 ]);
-var app = geoTodoApp;
 
-geoTodoApp.config(['$routeProvider',
+angular.module('geoTodoApp').config(['$routeProvider',
 	function ($routeProvider) {
 		$routeProvider.
 			when('/map', {
@@ -30,5 +29,5 @@ geoTodoApp.config(['$routeProvider',
 			});
 	}]);
 
-geoTodoApp.controller('MenuCtrl', function ($scope) {
+angular.module('geoTodoApp').controller('MenuCtrl', function ($scope) {
 });
