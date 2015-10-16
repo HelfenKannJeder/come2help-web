@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "closurecompiler": "^1.5.2",
-    "browserstack-webdriver": "^3.9.0",
+    "browserstack-webdriver": "^2.41.1",
     "bower": "^1.6.3",
     "node-sass": "^3.3.3"
   }
