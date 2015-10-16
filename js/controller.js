@@ -1,18 +1,18 @@
 angular.module('geoTodoController', ['ngResource']);
 
 angular.module('geoTodoController').factory('Locations', function ($resource) {
-	return $resource("api/locations/:id");
+	return $resource('api/locations/:id');
 });
 
 angular.module('geoTodoController').factory('Tasks', function ($resource) {
-	return $resource("api/tasks/:id");
+	return $resource('api/tasks/:id');
 });
 
 angular.module('geoTodoController').service('geocoder', function () {
 	this.geocode = function (address, outerCallback) {
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({'address': address}, function (results, status) {
-			console.log(results);
+			$log(results);
 			if (status == google.maps.GeocoderStatus.OK) {
 				outerCallback({success: true, err: null, results: results});
 			} else {
@@ -63,10 +63,10 @@ angular.module('geoTodoController').controller('NewCtrl', ['$scope', 'Locations'
 					'longitude': results.results[0].geometry.location.K
 				});
 
-				$scope.inputName = "";
-				$scope.inputLocation = "";
+				$scope.inputName = '';
+				$scope.inputLocation = '';
 
-				console.log(results); //{success: true, err: undefined, results: {...} or {success:false, err: Error object, results: undefined}
+				$log(results); //{success: true, err: undefined, results: {...} or {success:false, err: Error object, results: undefined}
 			});
-		}
+		};
 	}]);
