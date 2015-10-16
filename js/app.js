@@ -28,6 +28,3 @@ angular.module('geoTodoApp').config(['$routeProvider',
 				redirectTo: '/map'
 			});
 	}]);
-
-angular.module('geoTodoApp').controller('MenuController', function ($scope) {
-});
