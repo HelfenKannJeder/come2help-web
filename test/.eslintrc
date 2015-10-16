@@ -24,7 +24,8 @@
 	},
 	"globals": {
 		"browser": false,
-		"expect": false
+		"expect": false,
+		"baseUrl": false
 	},
 	"extends": "eslint:recommended"
 }

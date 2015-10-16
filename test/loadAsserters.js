@@ -1,3 +1,9 @@
+/**
+ * Load the asserting libraries. This file must be required and executed in every test case:
+ *
+ * require('./loadAsserters')();
+ */
+
 module.exports = function() {
 	// Load chai and plugins
 	var chai = require('chai');
