@@ -7,21 +7,28 @@
   },
   "contributors": [
     {
-      "name": "Valentin Zickner",
-      "email": "zickner@querformatik.de",
       "name": "Peter Schuller",
       "email": "ps@pzzz.de"
     }
   ],
-  "license" : "GPL-3.0",
-  "repository" :  {
-    "type" : "git",
-    "url" : "https://github.com/npm/npm.git"
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/npm.git"
   },
   "devDependencies": {
-    "closurecompiler": "^1.5.2",
-    "browserstack-webdriver": "^2.41.1",
     "bower": "^1.6.3",
-    "node-sass": "^3.3.3"
+    "browserstack-webdriver": "^2.41.1",
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "closurecompiler": "^1.5.2",
+    "expect": "^1.12.2",
+    "mocha": "^2.3.3",
+    "node-sass": "^3.3.3",
+    "phantomjs": "^1.9.18",
+    "selenium-webdriver": "^2.47.0"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
