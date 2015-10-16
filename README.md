@@ -22,8 +22,8 @@ LICENSE file.
 
 4. If you want to use the backend, also install come2help-server. See the tutorial in come2help-server.
 
-5. Install the deleopment dependencies:
-<pre>np install</pre>
+5. Install the development dependencies:
+<pre>npm install</pre>
 
 6. Use bower to install the dependencies:
 <pre>bower install</pre>
