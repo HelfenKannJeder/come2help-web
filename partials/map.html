@@ -1,11 +1,11 @@
-<div ng-controller="MapCtrl">
-<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+<div>
+<ui-gmap-google-map center='ctrl.map.center' zoom='ctrl.map.zoom'>
     <ui-gmap-marker
             idKey="location.id"
             coords='location'
             options="location.options"
-            click="openDetails(location.id)"
-            data-ng-repeat="location in locations">
+            click="ctrl.openDetails(location.id)"
+            data-ng-repeat="location in ctrl.locations">
     </ui-gmap-marker>
 </ui-gmap-google-map>
 </div>
