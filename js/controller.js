@@ -27,46 +27,53 @@ angular.module('geoTodoController').service('geocoder', function () {
 });
 
 angular.module('geoTodoController').controller('MapController', ['$scope', 'Locations', function ($scope, Locations) {
-	$scope.map = {center: {latitude: 51.163333, longitude: 10.447778}, zoom: 6};
+	var vm = $scope; // TODO: Should be this
+
+	vm.map = {center: {latitude: 51.163333, longitude: 10.447778}, zoom: 6};
 
 	Locations.query(function (data) {
-		$scope.locations = data;
+		vm.locations = data;
 	});
 
-	$scope.openDetails = function (id) {
+	vm.openDetails = function (id) {
 		location.href = '#/detail/' + id;
 	};
 }]);
 
 angular.module('geoTodoController').controller('ListController', ['$scope', 'Locations', function ($scope, Locations) {
+	var vm = $scope; // TODO: Should be this
+
 	Locations.query(function (data) {
-		$scope.locations = data;
+		vm.locations = data;
 	});
 }]);
 
 angular.module('geoTodoController').controller('DetailController', ['$scope', 'Locations', '$routeParams', function ($scope, Locations, $routeParams) {
-	$scope.locationId = $routeParams.locationId;
+	var vm = $scope; // TODO: Should be this
+
+	vm.locationId = $routeParams.locationId;
 }]);
 
-angular.module('geoTodoController').controller('NewController', ['$scope', 'Locations', 'Tasks', 'geocoder',
-	function ($scope, Locations, Tasks, geocoder) {
-		Tasks.query(function (data) {
-			$scope.tasks = data;
-		});
+angular.module('geoTodoController').controller('NewController', ['$scope', 'Locations', 'Tasks', 'geocoder', function ($scope, Locations, Tasks, geocoder) {
+	var vm = $scope; // TODO: Should be this
 
-		$scope.addNew = function () {
-			var result = geocoder.geocode($scope.inputLocation, function (results) {
-				Locations.save({
-					'name': $scope.inputName,
-					'location': $scope.inputLocation,
-					'latitude': results.results[0].geometry.location.G,
-					'longitude': results.results[0].geometry.location.K
-				});
+	Tasks.query(function (data) {
+		vm.tasks = data;
+	});
 
-				$scope.inputName = '';
-				$scope.inputLocation = '';
-
-				$log(results); //{success: true, err: undefined, results: {...} or {success:false, err: Error object, results: undefined}
+	vm.addNew = function () {
+		var result = geocoder.geocode(vm.inputLocation, function (results) {
+			Locations.save({
+				'name': vm.inputName,
+				'location': vm.inputLocation,
+				'latitude': results.results[0].geometry.location.G,
+				'longitude': results.results[0].geometry.location.K
 			});
-		};
-	}]);
+
+			vm.inputName = '';
+			vm.inputLocation = '';
+
+			$log(results); //{success: true, err: undefined, results: {...} or {success:false, err: Error object, results: undefined}
+		});
+	};
+}]);
