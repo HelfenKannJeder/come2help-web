@@ -21,6 +21,9 @@
 		"angular/di": [
 			2,
 			"array"
+		],
+		"no-mixed-spaces-and-tabs": [
+			2, "smart-tabs"
 		]
 	},
 	"env": {

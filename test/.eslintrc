@@ -17,6 +17,9 @@
 		"semi": [
 			2,
 			"always"
+		],
+		"no-mixed-spaces-and-tabs": [
+			2, "smart-tabs"
 		]
 	},
 	"env": {
