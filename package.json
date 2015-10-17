@@ -5,12 +5,16 @@
   "bugs": {
     "url": "https://github.com/HelfenKannJeder/come2help-web/issues"
   },
-  "contributors": [
-    {
-      "name": "Peter Schuller",
-      "email": "ps@pzzz.de"
-    }
-  ],
+  "contributors": [{
+    "name": "Valentin Zickner",
+    "email": "zickner@querformatik.de"
+  }, {
+    "name": "Peter Schuller",
+    "email": "ps@pzzz.de"
+  }, {
+    "name": "Joshua Gleitze",
+    "email": "joshua@joshuagleitze.de"
+  }],
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
