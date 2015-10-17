@@ -1,0 +1,8 @@
+install:
+    - npm install
+    - $(npm bin)/bower install
+
+script:
+    - npm run lint
+    - npm test
+    - npm run browsertest
