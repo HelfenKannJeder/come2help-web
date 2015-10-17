@@ -17,6 +17,10 @@ var webdriver, browser;
 
 if (!browserstack) {
 	/*
+	 * Selenium requires their special before and after, while browserstack breaks with them.
+	 */
+	require('./loadAsserters')();
+	/*
 	 * Easy setup: Run tests in phantom js.
 	 */
 	before('Set up selenium with phantom js', function() {
