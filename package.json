@@ -1,35 +1,41 @@
 {
-	"name": "come2help-webclient",
-	"version": "0.0.1",
-	"homepage": "http://come2.help/",
-	"bugs": {
-		"url": "https://github.com/HelfenKannJeder/come2help-web/issues"
-	},
-	"contributors": [{
-		"name": "Peter Schuller",
-		"email": "ps@pzzz.de"
-	}],
-	"license": "GPL-3.0",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/npm/npm.git"
-	},
-	"devDependencies": {
-		"bower": "^1.6.3",
-		"browserstack-webdriver": "^2.41.1",
-		"chai": "^3.3.0",
-		"chai-as-promised": "^5.1.0",
-		"closurecompiler": "^1.5.2",
-		"connect": "^3.4.0",
-		"expect": "^1.12.2",
-		"mocha": "^2.3.3",
-		"node-sass": "^3.3.3",
-		"phantomjs": "^1.9.18",
-		"selenium-webdriver": "^2.47.0",
-		"serve-static": "^1.10.0"
-	},
-	"scripts": {
-		"test": "mocha",
-		"foo": "mocha"
-	}
+  "name": "come2help-webclient",
+  "version": "0.0.1",
+  "homepage": "http://come2.help/",
+  "bugs": {
+    "url": "https://github.com/HelfenKannJeder/come2help-web/issues"
+  },
+  "contributors": [
+    {
+      "name": "Peter Schuller",
+      "email": "ps@pzzz.de"
+    }
+  ],
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/npm.git"
+  },
+  "devDependencies": {
+    "bower": "^1.6.3",
+    "browserstack-webdriver": "^2.41.1",
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "closurecompiler": "^1.5.2",
+    "connect": "^3.4.0",
+    "expect": "^1.12.2",
+    "minimist": "^1.2.0",
+    "mocha": "^2.3.3",
+    "node-sass": "^3.3.3",
+    "phantomjs": "^1.9.18",
+    "selenium-webdriver": "^2.47.0",
+    "serve-static": "^1.10.0",
+    "transfer": "^0.2.2",
+    "unzip": "^0.1.11"
+  },
+  "scripts": {
+    "test": "mocha --slow 2000",
+    "browsertest": "export BROWSER=TRUE && mocha",
+    "lint": "eslint js/**/*.js test/**/*.js"
+  }
 }

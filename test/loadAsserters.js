@@ -4,6 +4,8 @@
  * require('./loadAsserters')();
  */
 
+var browserstack = process.env.BROWSER === 'TRUE';
+
 module.exports = function() {
 	// Load chai and plugins
 	var chai = require('chai');
@@ -12,7 +14,7 @@ module.exports = function() {
 	global.expect = chai.expect;
 
 	// Override the mocha functions with the webdriver ones.
-	var seleniumTest = require('selenium-webdriver/testing');
+	var seleniumTest = browserstack ? require('browserstack-webdriver/testing') : require('selenium-webdriver/testing');
 	var extend = require('extend');
 	extend(global, seleniumTest);
 };

@@ -14,7 +14,6 @@ module.exports = {
 	middleware: function(req, res, next) {
 		var uri = path.normalize(req.url);
 		var verb = req.method;
-
 		if (mocks[uri] && mocks[uri][verb]) {
 			var data = mocks[uri][verb];
 			res.end(data.content);

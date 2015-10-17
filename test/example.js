@@ -5,8 +5,6 @@
 
 require('./loadAsserters')();
 
-var until = require('selenium-webdriver').until;
-var by = require('selenium-webdriver').By;
 var mocker = require('./mocker');
 
 describe('Home', function() {
@@ -33,13 +31,13 @@ describe('List', function() {
 	// Example for mocking
 	it('should load another entry', function() {
 		mocker.mockAPI('locations', [{
-			"id": 1,
-			"name": "Mocked Location",
-			"latitude": 49.1232,
-			"longitude": 8,
-			"location": "Schlossplatz"
+			id: 1,
+			name: 'Mocked Location',
+			latitude: 49.1232,
+			longitude: 8,
+			location: 'Schlossplatz'
 		}]);
-		browser.getPart('list');
+		browser.navigate().refresh();
 		browser.wait(until.elementLocated(by.css('.ng-scope table')), 4000);
 		expect(browser.findElement(by.css('table tr.ng-scope td')).getInnerHtml()).to.eventually.equal('Mocked Location');
 	});

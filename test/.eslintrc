@@ -25,7 +25,9 @@
 	"globals": {
 		"browser": false,
 		"expect": false,
-		"baseUrl": false
+		"baseUrl": false,
+		"until": false,
+		"by": false
 	},
 	"extends": "eslint:recommended"
 }
