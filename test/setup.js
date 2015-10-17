@@ -28,8 +28,7 @@ if (!browserstack) {
 	/*
 	 * Significant more complicated setup: Run tests with browserstack.
 	 */
-	var browserstackconfig = fs.readFileSync(path.join(__dirname, '.browserstackrc'));
-	browserstackconfig = JSON.parse(browserstackconfig);
+	var browserstackconfig = getBrowserStackConfig();
 	var localtest;
 
 	before('Launch browserstack local testing', function(done) {
@@ -60,8 +59,8 @@ if (!browserstack) {
 			'browser_version': '45.0',
 			'os': 'Windows',
 			'os_version': '10',
-			'browserstack.user': 'joshuagleitze3',
-			'browserstack.key': 'ynYf5s2zedTxKzpRJWth',
+			'browserstack.user': browserstackconfig.user,
+			'browserstack.key': browserstackconfig.key,
 			'browserstack.local': 'true'
 		};
 		browser = new browserstack.Builder()
@@ -178,4 +177,23 @@ function downloadBrowserstackLocalTesting(target, callback) {
 			fs.unlink(zipLocation, callback);
 		});
 	});
+}
+
+function getBrowserStackConfig() {
+	var configFile = path.join(__dirname, '.browserstackrc');
+	var config;
+	try {
+		fs.statSync(configFile);
+	} catch (e) {
+		config = {
+			user: process.env.BROWSERSTACK_USER,
+			key: process.env.BROWSERSTACK_KEY
+		};
+		if (!config.user || !config.key) {
+			throw new Error('Please define your browserstack credentials, either in test/.browserstackrc or through the ENVs BROWSERSTACK_USER and BROWSERSTACK_KEY!');
+		}
+		return config;
+	}
+	config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+	return config;
 }
