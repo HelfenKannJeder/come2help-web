@@ -39,6 +39,6 @@ describe('List', function() {
 		}]);
 		browser.navigate().refresh();
 		browser.wait(until.elementLocated(by.css('.ng-scope table')), 4000);
-		expect(browser.findElement(by.css('table tr.ng-scope td')).getInnerHtml()).to.eventually.equal('Mocked Location');
+		expect(browser.findElement(by.css('.ng-scope table tr.ng-scope td')).getInnerHtml()).to.eventually.equal('Mocked Location');
 	});
 });
