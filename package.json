@@ -31,6 +31,7 @@
     "mocha": "^2.3.3",
     "node-sass": "^3.3.3",
     "phantomjs": "^1.9.18",
+    "q": "^1.4.1",
     "selenium-webdriver": "^2.47.0",
     "serve-static": "^1.10.0",
     "transfer": "^0.2.2",

@@ -2,10 +2,10 @@
  * Sets up the test environment
  */
 
-require('./loadAsserters')();
 var path = require('path');
 var mocker = require('./mocker');
 var fs = require('fs');
+var q = require('q');
 
 var port = 8086;
 var baseName = 'localhost';
@@ -32,11 +32,14 @@ if (!browserstack) {
 	var localtest;
 
 	before('Launch browserstack local testing', function(done) {
+		this.timeout(60000);
 		var spawn = require('child_process').execFile;
 
-		var localtestpath = getBrowsertackLocalTestingPath();
-		downloadBrowserstackLocalTesting(localtestpath, function() {
-			localtest = spawn(localtestpath, [browserstackconfig.key]);
+		var localtestfolder = getBrowsertackLocalTestingFolder();
+		downloadBrowserstackLocalTesting(localtestfolder)
+
+		.then(function(execPath) {
+			localtest = spawn(execPath, [browserstackconfig.key]);
 			localtest.stdout.on('data', function(data) {
 				var output = data.toString();
 				var teststring = 'You can now access your local server(s) in our remote browser.';
@@ -63,6 +66,7 @@ if (!browserstack) {
 			'browserstack.key': browserstackconfig.key,
 			'browserstack.local': 'true'
 		};
+
 		browser = new browserstack.Builder()
 			.usingServer('http://hub.browserstack.com/wd/hub')
 			.withCapabilities(capabilities)
@@ -80,6 +84,10 @@ before('Expose globals', function() {
 	};
 	global.browser = browser;
 	global.by = webdriver.By;
+
+	/*
+	 * Browserstack apparently uses an old version of selenium, no containing until. This is a fillin for it.
+	 */
 	global.until = {
 		elementLocated: function(locator) {
 			return function() {
@@ -112,22 +120,24 @@ after('Stop the browser', function() {
 	browser.quit();
 });
 
-
-function getBrowsertackLocalTestingPath() {
+/**
+ * @return {string} The path to a folder to put the browser stack local testing executable into (or to retrieve it from)
+ */
+function getBrowsertackLocalTestingFolder() {
 	var ospart;
 	switch (process.platform) {
 		case 'darwin':
-			ospart = 'mac/BrowserStackLocal';
+			ospart = 'mac';
 			break;
 		case 'linux':
 			if (process.arch === 'x64') {
-				ospart = 'linux64/BrowserStackLocal';
+				ospart = 'linux64';
 			} else {
-				ospart = 'linux32/BrowserStackLocal';
+				ospart = 'linux32';
 			}
 			break;
 		case 'win32':
-			ospart = 'win/BrowserStackLocal.exe';
+			ospart = 'win';
 			break;
 		default:
 			throw new Error('Unsuported operating system!');
@@ -135,10 +145,20 @@ function getBrowsertackLocalTestingPath() {
 	return path.resolve(path.join(__dirname, 'browserstacklocal', ospart));
 }
 
-function downloadBrowserstackLocalTesting(target, callback) {
-	fs.stat(target, function(err) {
-		if (!err) {
-			return callback();
+/**
+ * Puts the browserstack local testing executable into the provided folder.
+ *
+ * @param {string} folder The folder to put the executable in.
+ * @return {promise<string>} A promise for the path of the executable.
+ */
+function downloadBrowserstackLocalTesting(folder) {
+	var deferred = q.defer();
+	var fileName = process.platform.indexOf('win') > -1 ? 'BrowserStackLocal.exe' : 'BrowserStackLocal';
+	var target = path.join(folder, fileName);
+
+	fs.stat(target, function(err, stat) {
+		if (err === null && stat.isFile()) {
+			return deferred.resolve(target);
 		}
 
 		var url;
@@ -164,21 +184,34 @@ function downloadBrowserstackLocalTesting(target, callback) {
 		var download = transfer.get(url, dir);
 		var unzip = require('unzip');
 
-		console.log('Downloading the local testing executable!'); // eslint-disable-line no-console
+		console.log('Downloading the local testing executable…'); // eslint-disable-line no-console
 
 		download.on('error', function(error) {
-			throw new Error('Unable to download local testing: ' + error);
+			deferred.reject('Unable to download local testing: ' + error);
 		});
+
 		download.on('end', function() {
 			var zipLocation = path.join(dir, path.basename(url));
-			fs.createReadStream(zipLocation).pipe(unzip.Extract({
+			var extractor = unzip.Extract({
 				path: path.dirname(target)
-			}));
-			fs.unlink(zipLocation, callback);
+			});
+			fs.createReadStream(zipLocation).pipe(extractor);
+			extractor.on('close', function() {
+				fs.chmod(target, '755', function() {
+					deferred.resolve(target);
+				});
+				fs.unlink(zipLocation);
+			});
 		});
 	});
+	return deferred.promise;
 }
 
+/**
+ * Get's the browser stack access configuration.
+ *
+ * @return {{user: string, key: string}} The browser stack access configuration.
+ */
 function getBrowserStackConfig() {
 	var configFile = path.join(__dirname, '.browserstackrc');
 	var config;

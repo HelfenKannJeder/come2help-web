@@ -25,6 +25,7 @@ module.exports = {
 			next();
 		}
 	},
+
 	/**
 	 * Mocks the response for a request to the API at the specified endpoint. Unless options.persist is set to true, the mocked value will only be responded once.
 	 *
