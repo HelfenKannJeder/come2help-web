@@ -1,34 +1,36 @@
-var geoTodoApp = angular.module('geoTodoApp', [
-    'ngRoute',
-    'geoTodoController',
-    'uiGmapgoogle-maps',
-    'pascalprecht.translate'
-]);
-var app = geoTodoApp;
+angular.module('Come2HelpApp', [
+	'ngRoute',
+	'Come2HelpController',
+	'uiGmapgoogle-maps',
+	'pascalprecht.translate'
+])
+	.config(['$routeProvider',
+		function ($routeProvider) {
+			$routeProvider.
+				when('/map', {
+					templateUrl: 'partials/map.html',
+					controller: 'MapController',
+					controllerAs: 'ctrl'
 
-geoTodoApp.config(['$routeProvider',
-    function ($routeProvider) {
-        $routeProvider.
-            when('/map', {
-                templateUrl: 'partials/map.html',
-                controller: 'MapCtrl'
-            }).
-            when('/list', {
-                templateUrl: 'partials/list.html',
-                controller: 'ListCtrl'
-            }).
-            when('/detail/:locationId', {
-                templateUrl: 'partials/detail.html',
-                controller: 'DetailCtrl'
-            }).
-            when('/new', {
-                templateUrl: 'partials/new.html',
-                controller: 'NewCtrl'
-            }).
-            otherwise({
-                redirectTo: '/map'
-            });
-    }]);
+				}).
+				when('/list', {
+					templateUrl: 'partials/list.html',
+					controller: 'ListController',
+					controllerAs: 'ctrl'
+				}).
+				when('/detail/:locationId', {
+					templateUrl: 'partials/detail.html',
+					controller: 'DetailController',
+					controllerAs: 'ctrl'
 
-geoTodoApp.controller('MenuCtrl', function($scope) {
-});
+				}).
+				when('/new', {
+					templateUrl: 'partials/new.html',
+					controller: 'NewController',
+					controllerAs: 'ctrl'
+
+				}).
+				otherwise({
+					redirectTo: '/map'
+				});
+		}]);
