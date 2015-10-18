@@ -1,4 +1,4 @@
-# come2help Web-App
+# come2help Web-App [![Build Status](https://travis-ci.org/HelfenKannJeder/come2help-web.svg?branch=master)](https://travis-ci.org/HelfenKannJeder/come2help-web)
 
 <a href="http://come2.help">come2.help</a> is a project for recruiting and coordinating volunteer people.
 Possible scenarios are flooding or coordinating support for political refugees.
