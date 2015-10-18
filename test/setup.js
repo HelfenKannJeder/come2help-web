@@ -120,8 +120,9 @@ before('Set up the JSON server and mocker', function() {
 	server.listen(port);
 });
 
-after('Stop the browser', function() {
-	browser.quit();
+after('Stop the browser', function(done) {
+	this.timeout(6000);
+	browser.quit().then(done);
 });
 
 /**
