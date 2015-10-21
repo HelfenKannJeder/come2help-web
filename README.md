@@ -36,3 +36,7 @@ LICENSE file.
   <pre>python -m SimpleHTTPServer</pre>
   or
   <pre>python3 -m http.server</pre>
+  No caching alternatives:
+  <pre>python nocacheserver.py</pre>
+  or
+  <pre>python3 nocacheserver3.py</pre>
