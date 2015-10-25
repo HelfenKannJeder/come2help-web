@@ -4,5 +4,6 @@ install:
 
 script:
     - npm run lint
+    - npm run build-css
     - npm test
     - npm run browsertest

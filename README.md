@@ -31,6 +31,7 @@ LICENSE file.
 7. Run the index.html in a browser of your choice.
   Be careful about cross-site script detection, since the server is not running at the same domain as your client.
   Maybe you have to use a proxy server like nginx.
+  If `style.css` is missing, run `npm run build-css` first to transpile SASS to CSS.
   
 8. Start a python Webserver with:
   <pre>python -m SimpleHTTPServer</pre>
