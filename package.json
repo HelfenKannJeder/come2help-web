@@ -42,7 +42,7 @@
     "unzip": "^0.1.11"
   },
   "scripts": {
-    "build-css": "node-sass css --output css",
+    "build-css": "node-sass css --output build/css",
     "test": "mocha --slow 2000",
     "browsertest": "export BROWSER=TRUE && mocha --slow 30000",
     "lint": "eslint js/**/*.js test/**/*.js"
