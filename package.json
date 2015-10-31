@@ -45,7 +45,7 @@
     "unzip": "^0.1.11"
   },
   "scripts": {
-    "postinstall-deploy": "npm run build-css && npm run lint && npm run test && npm run browsertest",
+    "postinstall-deploy": "npm run build-css && npm run lint && npm test && npm run browsertest",
     "postinstall-dev": "npm run build-css && npm run lint && npm run watch-css",
     "build-css": "node-sass css --output build/css",
     "watch-css": "node-sass -w -r css --output build/css",
