@@ -3,7 +3,4 @@ install:
     - $(npm bin)/bower install
 
 script:
-    - npm run lint
-    - npm run build-css
-    - npm test
-    - npm run browsertest
+    - npm run postinstall-deploy
