@@ -1,8 +1,9 @@
+language: node_js
+node_js: stable
+
 install:
     - npm install
     - $(npm bin)/bower install
 
 script:
-    - npm run lint
-    - npm test
-    - npm run browsertest
+    - npm run postinstall-deploy

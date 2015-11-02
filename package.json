@@ -14,6 +14,9 @@
   }, {
     "name": "Joshua Gleitze",
     "email": "joshua@joshuagleitze.de"
+  }, {
+    "name": "Sebastian Richter",
+    "email": "sebastian.max.richter@gmail.com"
   }],
   "license": "GPL-3.0",
   "repository": {
@@ -42,6 +45,10 @@
     "unzip": "^0.1.11"
   },
   "scripts": {
+    "postinstall-deploy": "npm run build-css && npm run lint && npm test && npm run browsertest",
+    "postinstall-dev": "npm run build-css && npm run lint && npm run watch-css",
+    "build-css": "node-sass css --output build/css",
+    "watch-css": "node-sass -w -r css --output build/css",
     "test": "mocha --slow 2000",
     "browsertest": "export BROWSER=TRUE && mocha --slow 30000",
     "lint": "eslint js/**/*.js test/**/*.js"
