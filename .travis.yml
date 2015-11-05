@@ -6,4 +6,4 @@ install:
     - $(npm bin)/bower install
 
 script:
-    - npm run postinstall-deploy
+    - npm run postinstall-deploy -s
