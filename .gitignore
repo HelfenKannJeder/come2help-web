@@ -4,5 +4,4 @@ bower_components
 npm-debug.log
 node_modules
 /phantomjsdriver.log
-test/.browserstackrc
-test/browserstacklocal
+test/behaviour/.browserstackrc

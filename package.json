@@ -22,11 +22,11 @@
   },
   "devDependencies": {
     "bower": "^1.6.3",
-    "browserstack-webdriver": "^2.41.1",
     "chai": "^3.3.0",
     "chai-as-promised": "^5.1.0",
     "closurecompiler": "^1.5.2",
     "connect": "^3.4.0",
+    "date-format-lite": "^0.7.4",
     "eslint": "^1.6.0",
     "eslint-config-angular": "^0.4.0",
     "eslint-plugin-angular": "^0.12.0",
@@ -34,16 +34,14 @@
     "js-beautify": "^1.5.10",
     "mocha": "^2.3.3",
     "node-sass": "^3.3.3",
-    "phantomjs": "^1.9.18",
+    "protractor": "git+https://github.com/jGleitz/protractor.git#browserstack",
     "q": "^1.4.1",
-    "selenium-webdriver": "^2.47.0",
-    "serve-static": "^1.10.0",
-    "transfer": "^0.2.2",
-    "unzip": "^0.1.11"
+    "serve-static": "^1.10.0"
   },
   "scripts": {
-    "test": "mocha --slow 2000",
-    "browsertest": "export BROWSER=TRUE && mocha --slow 30000",
+    "postinstall": "webdriver-manager update --standalone --chrome --browserstacklocal",
+    "test": "protractor test/behaviour/protractor.conf",
+    "browsertest": "protractor test/behaviour/protractor.browserstack.conf",
     "lint": "eslint js/**/*.js test/**/*.js"
   }
 }
