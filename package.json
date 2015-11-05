@@ -14,6 +14,9 @@
   }, {
     "name": "Joshua Gleitze",
     "email": "joshua@joshuagleitze.de"
+  }, {
+    "name": "Sebastian Richter",
+    "email": "sebastian.max.richter@gmail.com"
   }],
   "license": "GPL-3.0",
   "repository": {
@@ -39,9 +42,13 @@
     "serve-static": "^1.10.0"
   },
   "scripts": {
-    "postinstall": "webdriver-manager update --standalone --chrome --browserstacklocal",
     "test": "protractor test/behaviour/protractor.conf",
     "browsertest": "protractor test/behaviour/protractor.browserstack.conf",
+    "postinstall": "webdriver-manager update --standalone --chrome --browserstacklocal && npm run build-css",
+    "postinstall-deploy": "npm run lint && npm test && npm run browsertest",
+    "postinstall-dev": "npm run lint && npm run watch-css",
+    "build-css": "node-sass css --output build/css",
+    "watch-css": "node-sass -w -r css --output build/css",
     "lint": "eslint js/**/*.js test/**/*.js"
   }
 }
