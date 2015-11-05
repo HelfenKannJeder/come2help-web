@@ -5,19 +5,24 @@
   "bugs": {
     "url": "https://github.com/HelfenKannJeder/come2help-web/issues"
   },
-  "contributors": [{
-    "name": "Valentin Zickner",
-    "email": "zickner@querformatik.de"
-  }, {
-    "name": "Peter Schuller",
-    "email": "ps@pzzz.de"
-  }, {
-    "name": "Joshua Gleitze",
-    "email": "joshua@joshuagleitze.de"
-  }, {
-    "name": "Sebastian Richter",
-    "email": "sebastian.max.richter@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Valentin Zickner",
+      "email": "zickner@querformatik.de"
+    },
+    {
+      "name": "Peter Schuller",
+      "email": "ps@pzzz.de"
+    },
+    {
+      "name": "Joshua Gleitze",
+      "email": "joshua@joshuagleitze.de"
+    },
+    {
+      "name": "Sebastian Richter",
+      "email": "sebastian.max.richter@gmail.com"
+    }
+  ],
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
@@ -37,6 +42,7 @@
     "js-beautify": "^1.5.10",
     "mocha": "^2.3.3",
     "node-sass": "^3.3.3",
+    "portfinder": "^0.4.0",
     "protractor": "git+https://github.com/jGleitz/protractor.git#browserstack",
     "q": "^1.4.1",
     "serve-static": "^1.10.0"
