@@ -8,6 +8,11 @@ if (!process.env.BUILDNAME) {
 	process.env.BUILDNAME = new Date().format('D.M.YY h:mm');
 }
 
+if (process.env.TRAVIS === 'true' && process.env.TRAVIS_PULL_REQUEST !== 'false') {
+	console.log('This is a pull request on Travis. For security reasons, browsertack tests will be skipped.'); // eslint-disable-line no-console
+	process.exit(0);
+}
+
 exports.config = {
 	// Run more error prone browsers first!
 	multiCapabilities: [{
@@ -30,6 +35,27 @@ exports.config = {
 		'platform': 'ANDROID',
 		'device': 'Samsung Galaxy S5'
 	}, {
+		'browserName': 'android',
+		'platform': 'ANDROID',
+		'device': 'Google Nexus 5'
+	}, {
+		'browserName': 'iPhone',
+		'platform': 'MAC',
+		'device': 'iPhone 6'
+	}, {
+		'browserName': 'iPhone',
+		'platform': 'MAC',
+		'device': 'iPhone 5'
+	}, {
+		'browserName': 'iPad',
+		'platform': 'MAC',
+		'device': 'iPad Air'
+	}, {
+		'browser': 'Safari',
+		'browser_version': '8.0',
+		'os': 'OS X',
+		'os_version': 'Yosemite'
+	}, {
 		'browser': 'Firefox',
 		'browser_version': '41.0',
 		'os': 'Windows',
@@ -47,6 +73,7 @@ exports.config = {
 
 	browserstack: {
 		local: true,
+		debug: true,
 		key: key(),
 		user: user(),
 		reportResults: false,
@@ -71,6 +98,14 @@ function renameBrowser(capability) {
 	if (capability.browser && !capability.browserName) {
 		capability.browserName = capability.browser;
 		delete capability.browser;
+	}
+	if (capability.device) {
+		capability.logName = capability.device;
+	} else {
+		capability.logName = (capability.browserName || '') + ' ' + (capability.browser_version || '');
+		if (capability.os) {
+			capability.logName += ' on ' + capability.os + ' ' + (capability.os_version || '');
+		}
 	}
 	return capability;
 }

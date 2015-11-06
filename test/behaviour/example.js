@@ -8,7 +8,7 @@ require('./asserters')();
 var server = require('./apimocker');
 
 describe('Home', function() {
-	this.timeout(2 * 60 * 1000);
+	this.timeout(1 * 60 * 1000);
 
 	it('should have "come2.help" as title', function() {
 		browser.get(baseUrl);
@@ -18,7 +18,7 @@ describe('Home', function() {
 });
 
 describe('List', function() {
-	this.timeout(4 * 60 * 1000);
+	this.timeout(2 * 60 * 1000);
 
 	var locationlist = by.repeater('location in ctrl.locations');
 
