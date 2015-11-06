@@ -5,7 +5,8 @@ exports.config = {
 
 	framework: 'mocha',
 	mochaOpts: {
-		reporter: 'spec'
+		reporter: 'spec',
+		slow: 3000
 	},
 	specs: ['**/*.js'],
 	exclude: ['**/*.conf.js']

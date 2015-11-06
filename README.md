@@ -48,13 +48,11 @@ Tests are run through the `npm` interface:
 
  * `npm test`
 
-  Runs the behaviour test in a PhantomJS instance.
-
- _**Note:** unfortunately, PhantomJS testing with protractor is quite error prone. `npm run chrometest -s` is recommended for testing in development!_
+  Runs the behaviour test in Firefox. Requires firefox to be installed.
 
  * `npm run chrometest -s`
 
- Runs the behaviour test in Chrome (requires Chrome to be installed, duh).
+ Runs the behaviour test in Chrome. Requires chrome to be installed.
 
  * `npm run browsertest -s`
 
