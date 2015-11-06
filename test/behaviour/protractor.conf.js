@@ -1,8 +1,10 @@
 exports.config = {
 	capabilities: {
-		browserName: 'chrome'
+		browserName: 'phantomjs',
+		'phantomjs.binary.path': require('phantomjs').path
 	},
 
 	framework: 'mocha',
-	specs: ['**/*.js']
+	specs: ['**/*.js'],
+	exclude: ['**/*.conf.js']
 };

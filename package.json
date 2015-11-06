@@ -42,6 +42,7 @@
     "js-beautify": "^1.5.10",
     "mocha": "^2.3.3",
     "node-sass": "^3.3.3",
+    "phantomjs": "^1.9.18",
     "portfinder": "^0.4.0",
     "protractor": "git+https://github.com/jGleitz/protractor.git#browserstack",
     "q": "^1.4.1",

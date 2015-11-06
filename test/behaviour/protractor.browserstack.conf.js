@@ -83,7 +83,8 @@ exports.config = {
 	},
 
 	framework: 'mocha',
-	specs: ['**/*.js']
+	specs: ['**/*.js'],
+	exclude: ['**/*.conf.js']
 };
 
 function key() {

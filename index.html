@@ -1,43 +1,46 @@
 <html ng-app="Come2HelpApp">
+
 <head>
-    <title>come2.help</title>
-    <!-- TODO: Configuration for API_KEY -->
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCZTJBpBQPc-8pQIin2_H42p_9u6afuw_M&signed_in=true'></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/lodash/lodash.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="bower_components/angular-simple-logger/dist/index.js"></script>
-    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
-    <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/controller.js"></script>
-    <script src="js/i18n.js"></script>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="build/css/style.css"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>come2.help</title>
+	<!-- TODO: Configuration for API_KEY -->
+	<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/lodash/lodash.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="bower_components/angular-simple-logger/dist/index.js"></script>
+	<script src="bower_components/angular-translate/angular-translate.min.js"></script>
+	<script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controller.js"></script>
+	<script src="js/i18n.js"></script>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="build/css/style.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
+
 <body>
 
-<div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="http://come2.help/">come2.help</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/map">{{ 'Map' | translate }}</a></li>
-                    <li><a href="#/list">{{ 'List' | translate }}</a></li>
-                    <li><a href="#/new">{{ 'Add' | translate }}</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="http://come2.help/">come2.help</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#/map">{{ 'Map' | translate }}</a></li>
+						<li><a href="#/list">{{ 'List' | translate }}</a></li>
+						<li><a href="#/new">{{ 'Add' | translate }}</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-    <div ng-view></div>
-</div>
+		<div ng-view></div>
+	</div>
 </body>
+
 </html>
