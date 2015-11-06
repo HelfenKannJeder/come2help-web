@@ -1,0 +1,14 @@
+root = true
+
+[**/*]
+indent_style = tab
+end_of_line = lf
+charset = utf-8
+
+[package.json]
+indent_style = space
+indent_size = 2
+
+[**/*.yml]
+indent_style = space
+indent_size = 4
