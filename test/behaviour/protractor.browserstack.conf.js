@@ -15,57 +15,70 @@ if (process.env.TRAVIS === 'true' && process.env.TRAVIS_PULL_REQUEST !== 'false'
 
 exports.config = {
 	// Run more error prone browsers first!
-	multiCapabilities: [{
-		'browser': 'IE',
-		'browser_version': '10.0',
-		'os': 'Windows',
-		'os_version': '7'
-	}, {
-		'browser': 'IE',
-		'browser_version': '11.0',
-		'os': 'Windows',
-		'os_version': '7'
-	}, {
+	multiCapabilities: [
+		/* beautify preserve:start beautify preserve:end */ // force newline for ESLint
+		{
+			'browser': 'IE',
+			'browser_version': '10.0',
+			'os': 'Windows',
+			'os_version': '7'
+		}, {
+			'browser': 'IE',
+			'browser_version': '11.0',
+			'os': 'Windows',
+			'os_version': '7'
+		},
+		/* Fails to run! ('Not implemented')
+	{
 		'browser': 'Edge',
 		'browser_version': '12.0',
 		'os': 'Windows',
 		'os_version': '10'
-	}, {
-		'browserName': 'android',
-		'platform': 'ANDROID',
-		'device': 'Samsung Galaxy S5'
-	}, {
-		'browserName': 'android',
-		'platform': 'ANDROID',
-		'device': 'Google Nexus 5'
-	}, {
-		'browserName': 'iPhone',
-		'platform': 'MAC',
-		'device': 'iPhone 6'
-	}, {
-		'browserName': 'iPhone',
-		'platform': 'MAC',
-		'device': 'iPhone 5'
-	}, {
-		'browserName': 'iPad',
-		'platform': 'MAC',
-		'device': 'iPad Air'
-	}, {
-		'browser': 'Safari',
-		'browser_version': '8.0',
-		'os': 'OS X',
-		'os_version': 'Yosemite'
-	}, {
-		'browser': 'Firefox',
-		'browser_version': '41.0',
-		'os': 'Windows',
-		'os_version': '10'
-	}, {
-		'browser': 'Chrome',
-		'browser_version': '46.0',
-		'os': 'Windows',
-		'os_version': '10'
-	}].map(renameBrowser),
+	}, */
+		{
+			'browserName': 'android',
+			'platform': 'ANDROID',
+			'device': 'Samsung Galaxy S5'
+		},
+		/* All below browsers fail to run on browserstack.
+		{
+			'browserName' : 'android',
+			'platform' : 'ANDROID',
+			'device' : 'Google Nexus 4'
+		}, {
+			'browserName': 'android',
+			'platform': 'ANDROID',
+			'device': 'Google Nexus 5'
+		}, {
+			'browserName': 'iPhone',
+			'platform': 'MAC',
+			'device': 'iPhone 6'
+		}, {
+			'browserName': 'iPhone',
+			'platform': 'MAC',
+			'device': 'iPhone 5'
+		}, {
+			'browserName': 'iPad',
+			'platform': 'MAC',
+			'device': 'iPad Air'
+		}, {
+			'browser': 'Safari',
+			'browser_version': '8.0',
+			'os': 'OS X',
+			'os_version': 'Yosemite'
+		}, */
+		{
+			'browser': 'Firefox',
+			'browser_version': '41.0',
+			'os': 'Windows',
+			'os_version': '10'
+		}, {
+			'browser': 'Chrome',
+			'browser_version': '46.0',
+			'os': 'Windows',
+			'os_version': '10'
+		}
+	].map(renameBrowser),
 	maxSessions: 1,
 
 	beforeLaunch: require('protractor/lib/driverProviders/browserstack').launchLocal(key()),
@@ -83,6 +96,9 @@ exports.config = {
 	},
 
 	framework: 'mocha',
+	mochaOpts: {
+		reporter: 'min'
+	},
 	specs: ['**/*.js'],
 	exclude: ['**/*.conf.js']
 };
