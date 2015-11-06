@@ -23,16 +23,16 @@ LICENSE file.
 4. If you want to use the backend, also install come2help-server. See the tutorial in come2help-server.
 
 5. Install the development dependencies:
-<pre>npm install</pre>
+ <pre>npm install</pre>
 
 6. Use bower to install the dependencies:
-<pre>bower install</pre>
+ <pre>bower install</pre>
 
 7. Run the index.html in a browser of your choice.
-  Be careful about cross-site script detection, since the server is not running at the same domain as your client.
-  Maybe you have to use a proxy server like nginx.
-  If `style.css` is missing, run `npm run build-css` first to transpile SASS to CSS.
-  
+ Be careful about cross-site script detection, since the server is not running at the same domain as your client.
+ Maybe you have to use a proxy server like nginx.
+ If `style.css` is missing, run `npm run build-css` first to transpile SASS to CSS.
+
 8. Start a python Webserver with:
   <pre>python -m SimpleHTTPServer</pre>
   or
@@ -41,3 +41,26 @@ LICENSE file.
   <pre>python nocacheserver.py</pre>
   or
   <pre>python3 nocacheserver3.py</pre>
+
+
+## Testing
+Tests are run through the `npm` interface:
+
+ * `npm test`
+
+  Runs the behaviour test in a PhantomJS instance.
+
+ _**Note:** unfortunately, PhantomJS testing with protractor is quite error prone. `npm run chrometest -s` is recommended for testing in development!_
+
+ * `npm run chrometest -s`
+
+ Runs the behaviour test in Chrome (requires Chrome to be installed, duh).
+
+ * `npm run browsertest -s`
+
+ Runs the behaviour test in multiple browsers on BrowserStack. You'll need to provide BrowserStack credentials, either in the environment variables `BROWSERSTACK_USER` and `BROWSERSTACK_KEY`, or in `test/behaviour/.browserstackrc` in the form of `module.exports = {key: YOUR_KEY, user: YOUR_USERNAME}`.
+
+ * `npm run lint -s`
+
+ Lints the code.
+

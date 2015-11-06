@@ -50,9 +50,10 @@
   },
   "scripts": {
     "test": "protractor test/behaviour/protractor.conf",
+    "chrometest": "protractor test/behaviour/protractor.conf --browser chrome",
     "browsertest": "protractor test/behaviour/protractor.browserstack.conf",
     "postinstall": "webdriver-manager update --standalone --chrome --browserstacklocal && npm run build-css",
-    "postinstall-deploy": "npm run lint -s && npm run browsertest -s",
+    "postinstall-deploy": "npm run lint -s && npm test -s && npm run browsertest -s",
     "postinstall-dev": "npm run lint -s && npm run watch-css -s",
     "build-css": "node-sass css --output build/css",
     "watch-css": "node-sass -w -r css --output build/css",
