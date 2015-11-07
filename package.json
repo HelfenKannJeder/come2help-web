@@ -40,7 +40,6 @@
     "eslint-config-angular": "^0.4.0",
     "eslint-plugin-angular": "^0.12.0",
     "extend": "^3.0.0",
-    "foo": "^1.0.0",
     "js-beautify": "^1.5.10",
     "livereload": "^0.4.0",
     "mocha": "^2.3.3",
@@ -50,7 +49,8 @@
     "selenium-webdriver": "^2.47.0",
     "serve-static": "^1.10.0",
     "transfer": "^0.2.2",
-    "unzip": "^0.1.11"
+    "unzip": "^0.1.11",
+    "watch": "^0.16.0"
   },
   "scripts": {
     "postinstall": "bower install && npm run build-css",
