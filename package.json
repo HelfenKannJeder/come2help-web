@@ -5,19 +5,24 @@
   "bugs": {
     "url": "https://github.com/HelfenKannJeder/come2help-web/issues"
   },
-  "contributors": [{
-    "name": "Valentin Zickner",
-    "email": "zickner@querformatik.de"
-  }, {
-    "name": "Peter Schuller",
-    "email": "ps@pzzz.de"
-  }, {
-    "name": "Joshua Gleitze",
-    "email": "joshua@joshuagleitze.de"
-  }, {
-    "name": "Sebastian Richter",
-    "email": "sebastian.max.richter@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Valentin Zickner",
+      "email": "zickner@querformatik.de"
+    },
+    {
+      "name": "Peter Schuller",
+      "email": "ps@pzzz.de"
+    },
+    {
+      "name": "Joshua Gleitze",
+      "email": "joshua@joshuagleitze.de"
+    },
+    {
+      "name": "Sebastian Richter",
+      "email": "sebastian.max.richter@gmail.com"
+    }
+  ],
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
@@ -29,12 +34,15 @@
     "chai": "^3.3.0",
     "chai-as-promised": "^5.1.0",
     "closurecompiler": "^1.5.2",
+    "colors": "^1.1.2",
     "connect": "^3.4.0",
     "eslint": "^1.6.0",
     "eslint-config-angular": "^0.4.0",
     "eslint-plugin-angular": "^0.12.0",
     "extend": "^3.0.0",
+    "foo": "^1.0.0",
     "js-beautify": "^1.5.10",
+    "livereload": "^0.4.0",
     "mocha": "^2.3.3",
     "node-sass": "^3.3.3",
     "phantomjs": "^1.9.18",
@@ -45,12 +53,11 @@
     "unzip": "^0.1.11"
   },
   "scripts": {
-    "postinstall-deploy": "npm run build-css && npm run lint && npm test && npm run browsertest",
-    "postinstall-dev": "npm run build-css && npm run lint && npm run watch-css",
-    "build-css": "node-sass css --output build/css",
-    "watch-css": "node-sass -w -r css --output build/css",
+    "postinstall": "bower install && npm run build-css",
+    "build-css": "node tasks/sass",
     "test": "mocha --slow 2000",
     "browsertest": "export BROWSER=TRUE && mocha --slow 30000",
-    "lint": "eslint js/**/*.js test/**/*.js"
+    "lint": "eslint js/**/*.js test/**/*.js",
+    "start": "node tasks/watch"
   }
 }

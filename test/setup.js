@@ -6,6 +6,7 @@ var path = require('path');
 var mocker = require('./mocker');
 var fs = require('fs');
 var q = require('q');
+var Server = require('../tasks/server');
 
 var port = 8086;
 var baseName = 'localhost';
@@ -112,11 +113,8 @@ before('Expose globals', function() {
 });
 
 before('Set up the JSON server and mocker', function() {
-	var connect = require('connect');
-	var serveStatic = require('serve-static');
-	var server = connect();
+	var server = new Server();
 	server.use(mocker.middleware);
-	server.use(serveStatic(path.dirname(__dirname)));
 	server.listen(port);
 });
 
