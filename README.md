@@ -34,3 +34,22 @@ LICENSE file.
 7. Run `localhost:8000` in a browser of your choice. Install [LiveReload](http://livereload.com/) to have it automatically updated.
 
 8. Start coding!
+
+## Testing
+Tests are run through `npm`:
+
+ * `npm test`
+
+  Runs the behaviour test in Firefox. Requires firefox to be installed.
+
+ * `npm run chrometest -s`
+
+ Runs the behaviour test in Chrome. Requires chrome to be installed.
+
+ * `npm run browsertest -s`
+
+ Runs the behaviour test in multiple browsers on BrowserStack. You'll need to provide BrowserStack credentials, either in the environment variables `BROWSERSTACK_USER` and `BROWSERSTACK_KEY`, or in `test/behaviour/.browserstackrc` in the form of `module.exports = {key: YOUR_KEY, user: YOUR_USERNAME}`.
+
+ * `npm run lint -s`
+
+ Lints the code.
