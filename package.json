@@ -51,9 +51,10 @@
     "watch": "^0.16.0"
   },
   "scripts": {
-    "postinstall": "bower install && npm run build-css",
+    "postinstall": "bower install && npm run install-testdependencies && npm run build-css",
     "build-css": "node tasks/sass",
     "test": "protractor test/behaviour/protractor.conf",
+    "install-testdependencies": "webdriver-manager update --standalone --chrome --browserstacklocal",
     "browsertest": "protractor test/behaviour/protractor.browserstack.conf",
     "chrometest": "protractor test/behaviour/protractor.conf --browser chrome",
     "lint": "eslint js/**/*.js test/**/*.js",
