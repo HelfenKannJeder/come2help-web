@@ -22,29 +22,21 @@ LICENSE file.
 
 4. If you want to use the backend, also install come2help-server. See the tutorial in come2help-server.
 
-5. Install the development dependencies:
+5. Install all dependencies:
  <pre>npm install</pre>
 
-6. Use bower to install the dependencies:
- <pre>bower install</pre>
+6. Start the development services:
+ <pre>npm start</pre> This will start:
+ * A watch to build all files that need to be built.
+ * A webserver
+ * A LiveReload server
 
-7. Run the index.html in a browser of your choice.
- Be careful about cross-site script detection, since the server is not running at the same domain as your client.
- Maybe you have to use a proxy server like nginx.
- If `style.css` is missing, run `npm run build-css` first to transpile SASS to CSS.
+7. Run `localhost:8000` in a browser of your choice. Install [LiveReload](http://livereload.com/) to have it automatically updated.
 
-8. Start a python Webserver with:
-  <pre>python -m SimpleHTTPServer</pre>
-  or
-  <pre>python3 -m http.server</pre>
-  No caching alternatives:
-  <pre>python nocacheserver.py</pre>
-  or
-  <pre>python3 nocacheserver3.py</pre>
-
+8. Start coding!
 
 ## Testing
-Tests are run through the `npm` interface:
+Tests are run through `npm`:
 
  * `npm test`
 
@@ -61,4 +53,3 @@ Tests are run through the `npm` interface:
  * `npm run lint -s`
 
  Lints the code.
-

@@ -10,4 +10,6 @@ before_script:
     - "export DISPLAY=:99.0"
 
 script:
-    - npm run postinstall-deploy -s
+    - npm run lint -s
+    - npm test
+    - npm run browsertest -s

@@ -2,9 +2,9 @@
  * Sets up the test environment
  */
 
-var path = require('path');
 var mocker = require('./apimocker');
 var portfinder = require('portfinder');
+var Server = require('../../tasks/server');
 
 var port;
 var host = 'localhost';
@@ -31,10 +31,7 @@ before('Expose globals', function() {
 });
 
 before('Set up the JSON server and mocker', function() {
-	var connect = require('connect');
-	var serveStatic = require('serve-static');
-	var server = connect();
+	var server = new Server();
 	server.use(mocker.middleware);
-	server.use(serveStatic(path.resolve(__dirname, '../..')));
 	server.listen(port);
 });
