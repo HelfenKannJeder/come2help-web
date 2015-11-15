@@ -1,0 +1,3 @@
+# set line ending of .js files to lf so git wont change it to crlf on windows
+# that is important or else lint will output an error for every single line
+*.js text eol=lf
