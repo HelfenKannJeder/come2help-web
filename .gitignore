@@ -6,3 +6,4 @@ node_modules
 /phantomjsdriver.log
 test/behaviour/.browserstackrc
 build
+/nbproject
