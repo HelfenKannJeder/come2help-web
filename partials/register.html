@@ -36,7 +36,7 @@
 	<div class="form-group ">
 		<label for="inputAbilities[]" class="col-sm-2 control-label">{{ 'Abilities' | translate }}</label>
 		<div class="col-sm-8" ng-repeat="ability in ctrl.abilities">
-			<input type="checkbox" name="inputAbilities[]" id="inputAbilities[]" value="{{ability.id}}"> {{ability.name}}
+			<input type="checkbox" name="inputAbilities[]" id="inputAbilities[]" value="{{ability.id}}"> <span>{{ability.name}}</span>
 		</div>
 	</div>
 	<div class="form-group">

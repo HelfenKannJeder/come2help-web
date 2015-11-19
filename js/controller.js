@@ -41,7 +41,7 @@ angular.module('Come2HelpController').controller('RegisterController', ['Abiliti
 				'zipCode': vm.zipCode
 			},
 			'phone': vm.phone,
-			'isAdult': vm.isAdult == true
+			'adult': vm.adult == true
 
 		});
 	};
