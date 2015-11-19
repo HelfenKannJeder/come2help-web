@@ -7,12 +7,12 @@ angular.module('Come2HelpApp', [
 	.config(['$routeProvider',
 		function ($routeProvider) {
 			$routeProvider.
-				when('/list', {
-					templateUrl: 'partials/list.html',
-					controller: 'ListController',
+				when('/register', {
+					templateUrl: 'partials/register.html',
+					controller: 'RegisterController',
 					controllerAs: 'ctrl'
 				}).
 				otherwise({
-					redirectTo: '/list'
+					redirectTo: '/register'
 				});
 		}]);

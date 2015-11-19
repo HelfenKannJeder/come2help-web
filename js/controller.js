@@ -1,7 +1,11 @@
 angular.module('Come2HelpController', ['ngResource']);
 
-angular.module('Come2HelpController').factory('Locations', ['$resource', function ($resource) {
-	return $resource('api/locations/:id');
+angular.module('Come2HelpController').factory('Abilities', ['$resource', function ($resource) {
+	return $resource('api/abilities/:id');
+}]);
+
+angular.module('Come2HelpController').factory('Volunteers', ['$resource', function ($resource) {
+	return $resource('api/volunteers/:id');
 }]);
 
 angular.module('Come2HelpController').service('geocoder', [function () {
@@ -22,10 +26,23 @@ angular.module('Come2HelpController').service('geocoder', [function () {
 	};
 }]);
 
-angular.module('Come2HelpController').controller('ListController', ['Locations', function (Locations) {
+angular.module('Come2HelpController').controller('RegisterController', ['Abilities', 'Volunteers', '$routeParams', function (Abilities, Volunteers, $routeParams) {
 	var vm = this;
 
-	Locations.query(function (data) {
-		vm.locations = data;
+	Abilities.query(function (data) {
+		vm.abilities = data;
 	});
+
+	vm.doRegister = function () {
+		Volunteers.save({
+			'givenName': vm.givenName,
+			'surname': vm.surname,
+			'address': {
+				'zipCode': vm.zipCode
+			},
+			'phone': vm.phone,
+			'isAdult': vm.isAdult == true
+
+		});
+	};
 }]);
