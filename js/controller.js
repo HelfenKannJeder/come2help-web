@@ -29,6 +29,8 @@ angular.module('Come2HelpController').service('geocoder', [function () {
 angular.module('Come2HelpController').controller('RegisterController', ['Abilities', 'Volunteers', '$routeParams', function (Abilities, Volunteers, $routeParams) {
 	var vm = this;
 
+	vm.error = null;
+
 	Abilities.query(function (data) {
 		vm.abilities = data;
 	});
@@ -43,6 +45,15 @@ angular.module('Come2HelpController').controller('RegisterController', ['Abiliti
 			'phone': vm.phone,
 			'adult': vm.adult == true
 
+		}, function() {
+			vm.error = null;
+
+
+			// TODO: Clear form and send to ``thank you''-page
+		}, function (response) {
+			vm.error = response.status;
+
+			// TODO: Verbose error handling
 		});
 	};
 }]);

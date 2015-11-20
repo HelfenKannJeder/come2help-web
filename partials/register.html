@@ -1,5 +1,7 @@
 <form class="form-horizontal" ng-submit="ctrl.doRegister()">
 
+	<div ng-show="ctrl.error" id="error" class="alert alert-danger" role="alert">{{ ctrl.error }}</div>
+
 	<div class="form-group ">
 		<label for="surname" class="col-sm-2 control-label">{{ 'Name' | translate }}</label>
 		<div class="col-sm-5">
@@ -28,9 +30,9 @@
 		</div>
 	</div>
 	<div class="form-group ">
-		<label for="isAdult" class="col-sm-2 control-label">{{ 'Is Adult' | translate }}</label>
+		<label for="adult" class="col-sm-2 control-label">{{ 'Is Adult' | translate }}</label>
 		<div class="col-sm-1">
-			<input class="form-control" ng-model="ctrl.isAdult" name="isAdult" id="isAdult" value="true" type="checkbox">
+			<input class="form-control" ng-model="ctrl.adult" name="adult" id="adult" value="true" type="checkbox">
 		</div>
 	</div>
 	<div class="form-group ">
