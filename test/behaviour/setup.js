@@ -2,7 +2,6 @@
  * Sets up the test environment
  */
 
-var mocker = require('./apimocker');
 var portfinder = require('portfinder');
 var Server = require('../../tasks/server');
 
@@ -32,6 +31,5 @@ before('Expose globals', function() {
 
 before('Set up the JSON server and mocker', function() {
 	var server = new Server();
-	server.use(mocker.middleware);
 	server.listen(port);
 });
