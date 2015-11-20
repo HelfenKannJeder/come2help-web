@@ -9,9 +9,5 @@ exports.config = {
 		slow: 3000
 	},
 	specs: ['**/*.js'],
-	exclude: ['**/*.conf.js'],
-	mocks: {
-		dir: 'mocks',
-		default: ['default']
-	}
+	exclude: ['**/*.conf.js']
 };
