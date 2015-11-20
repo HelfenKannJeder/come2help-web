@@ -5,8 +5,6 @@
 
 require('./asserters')();
 
-var mock = require('./http-mock');
-
 describe('Home', function() {
 	this.timeout(1 * 60 * 1000);
 
