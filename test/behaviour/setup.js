@@ -29,7 +29,7 @@ before('Expose globals', function() {
 	};
 });
 
-before('Set up the JSON server and mocker', function() {
+before('Set up the JSON server', function() {
 	var server = new Server();
 	server.listen(port);
 });
