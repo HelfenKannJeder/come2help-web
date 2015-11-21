@@ -58,6 +58,8 @@ describe('Register', function() {
 			}
 		]);
 		expect(element(by.id('error')).isDisplayed()).to.eventually.equal(false);
+		// Currently the test does not recognize the page forward, so the next line will fail.
+		//expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Thank you');
 
 	});
 
