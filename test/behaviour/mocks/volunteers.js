@@ -43,14 +43,14 @@ module.exports = [
 		},
 		response: {
 			status: 400,
-			data: [{
+			data: {
 				incidentId: '2a980d8c-4e98-49b4-aac7-a4faa7606a21',
 				clientErrors: [{
 					path: 'adult',
-					'code': 'has to be true',
+					code: 'has to be true',
 					value: false
 				}]
-			}]
+			}
 		}
 	}
 ];

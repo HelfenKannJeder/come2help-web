@@ -16,7 +16,8 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'E-Mail-Address': 'E-Mail-Address',
 		'Phone': 'Phone',
 		'Is Adult': 'Is Adult',
-		'Abilities': 'Abilities'
+		'Abilities': 'Abilities',
+		'Please correct the highlighted fields.': 'Please correct the highlighted fields.'
 	});
 
 	$translateProvider.translations('de', {
@@ -36,7 +37,8 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'E-Mail-Address': 'E-Mail-Adresse',
 		'Phone': 'Telefonnummer',
 		'Is Adult': 'Volljährig?',
-		'Abilities': 'Fähigkeiten'
+		'Abilities': 'Fähigkeiten',
+		'Please correct the highlighted fields.': 'Bitte korrigiere die hervorgebenen Felder.'
 	});
 
 	$translateProvider.fallbackLanguage('en')

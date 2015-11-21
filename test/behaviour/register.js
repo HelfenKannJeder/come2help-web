@@ -91,6 +91,7 @@ describe('Register', function() {
 			}
 		]);
 		expect(element(by.id('error')).isDisplayed()).to.eventually.equal(true);
+		expect(element.all(by.className('has-error')).count()).to.eventually.equal(1);
 
 	});
 });
