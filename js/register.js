@@ -1,4 +1,4 @@
-angular.module('Come2HelpController').controller('RegisterController', ['Abilities', 'Volunteers', '$routeParams', function (Abilities, Volunteers, $routeParams) {
+angular.module('Come2HelpController').controller('RegisterController', ['Abilities', 'Volunteers', '$routeParams', '$location', function (Abilities, Volunteers, $routeParams, $location) {
 	var vm = this;
 
 	vm.errors = null;
@@ -20,8 +20,13 @@ angular.module('Come2HelpController').controller('RegisterController', ['Abiliti
 		}, function() {
 			vm.errors = null;
 
+			vm.givenName = '';
+			vm.surname = '';
+			vm.zipCode = '';
+			vm.phone = '';
+			vm.adult = null;
 
-			// TODO: Clear form and send to ``thank you''-page
+			$location.path('/register/done');
 		}, function (response) {
 			vm.errors = {};
 
@@ -32,3 +37,7 @@ angular.module('Come2HelpController').controller('RegisterController', ['Abiliti
 		});
 	};
 }]);
+
+angular.module('Come2HelpController').controller('RegisterDoneController', function () {
+
+});
