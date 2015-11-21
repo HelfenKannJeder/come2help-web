@@ -37,7 +37,3 @@ angular.module('Come2HelpController').controller('RegisterController', ['Abiliti
 		});
 	};
 }]);
-
-angular.module('Come2HelpController').controller('RegisterDoneController', function () {
-
-});

@@ -13,9 +13,7 @@ angular.module('Come2HelpApp', [
 					controllerAs: 'ctrl'
 				}).
 				when('/register/done', {
-					templateUrl: 'partials/registerDone.html',
-					controller: 'RegisterDoneController',
-					controllerAs: 'ctrl'
+					templateUrl: 'partials/registerDone.html'
 				}).
 				otherwise({
 					redirectTo: '/register'
