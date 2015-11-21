@@ -14,12 +14,14 @@ describe('Register', function() {
 
 	var abilitylist = by.repeater('ability in ctrl.abilities');
 
-	it('should have two entries: "Ability 1" and "Ability 2"', function() {
+	it('should have two entries: "Mocked Ability 1" and "Mocked Ability 2"', function() {
+		mock(['abilities']);
+
 		browser.getPart('register');
 
 		expect(element.all(abilitylist).count()).to.eventually.equal(2);
-		expect(element(abilitylist.column('ability.name').row(0)).getInnerHtml()).to.eventually.contain('Ability 1');
-		expect(element(abilitylist.column('ability.name').row(1)).getInnerHtml()).to.eventually.contain('Ability 2');
+		expect(element(abilitylist.column('ability.name').row(0)).getInnerHtml()).to.eventually.contain('Mocked Ability');
+		expect(element(abilitylist.column('ability.name').row(1)).getInnerHtml()).to.eventually.contain('Mocked Ability');
 	});
 
 	it('register with correct data', function() {
