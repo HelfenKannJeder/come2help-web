@@ -14,7 +14,7 @@ describe('Register', function() {
 
 	var abilitylist = by.repeater('ability in ctrl.abilities');
 
-	it('should have two entries: "Mocked Ability 1" and "Mocked Ability 2"', function() {
+	it('has two entries: "Mocked Ability 1" and "Mocked Ability 2"', function() {
 		mock(['abilities']);
 
 		browser.getPart('register');
@@ -24,7 +24,7 @@ describe('Register', function() {
 		expect(element(abilitylist.column('ability.name').row(1)).getInnerHtml()).to.eventually.contain('Mocked Ability');
 	});
 
-	it('register with correct data', function() {
+	it('allows to register with correct data', function() {
 		mock(['volunteers']);
 
 		browser.getPart('register');
@@ -63,7 +63,7 @@ describe('Register', function() {
 
 	});
 
-	it('register with adult=false', function() {
+	it('shows an error for adult=false', function() {
 		mock(['volunteers']);
 
 		browser.getPart('register');
