@@ -1,0 +1,19 @@
+<h1>{{ 'Volunteers' | translate }}</h1>
+<table>
+	<tr>
+		<th>{{ 'Given Name' | translate }}</th>
+		<th>{{ 'Surname' | translate }}</th>
+		<th>{{ 'Zip Code' | translate }}</th>
+		<th>{{ 'Phone' | translate }}</th>
+		<th>{{ 'E-Mail' | translate }}</th>
+		<th>{{ 'Abilities' | translate }}</th>
+	</tr>
+	<tr ng-repeat="volunteer in ctrl.volunteers">
+		<td>{{volunteer.givenName}}</td>
+		<td>{{volunteer.surname}}</td>
+		<td>{{volunteer.address.zipCode}}</td>
+		<td>{{volunteer.phone}}</td>
+		<td>{{volunteer.email}}</td>
+		<td>{{volunteer.abilities}}</td>
+	</tr>
+</table>

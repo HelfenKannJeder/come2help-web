@@ -30,6 +30,11 @@ angular.module('Come2HelpApp', [
 					controllerAs: 'ctrl'
 
 				}).
+				when('/organisation/volunteerList', {
+					templateUrl: 'partials/organisation/volunteerList.html',
+					controller: 'VolunteerListController',
+					controllerAs: 'ctrl'
+				}).
 				otherwise({
 					redirectTo: '/map'
 				});
