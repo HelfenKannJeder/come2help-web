@@ -46,6 +46,7 @@
     "node-sass": "^3.3.3",
     "portfinder": "^0.4.0",
     "protractor": "git+https://github.com/jGleitz/protractor.git#browserstack",
+    "protractor-http-mock": "^0.1.18",
     "q": "^1.4.1",
     "sass-lint": "^1.3.2",
     "serve-static": "^1.10.0",
