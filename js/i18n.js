@@ -18,6 +18,7 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Is Adult': 'Is Adult',
 		'Abilities': 'Abilities',
 		'Please correct the highlighted fields.': 'Please correct the highlighted fields.',
+		'A fatal error occured': 'A fatal error occurred',
 		'Thank you for register!': 'Thank you for register!'
 	});
 
@@ -40,6 +41,7 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Is Adult': 'Volljährig?',
 		'Abilities': 'Fähigkeiten',
 		'Please correct the highlighted fields.': 'Bitte korrigiere die hervorgebenen Felder.',
+		'A fatal error occured': 'Es ist ein unerwarteter Fehler aufgetreten',
 		'Thank you for register!': 'Danke für die Registrierung!'
 	});
 

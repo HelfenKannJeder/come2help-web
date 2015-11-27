@@ -29,15 +29,15 @@ describe('Register', function() {
 
 		browser.getPart('register');
 
-		var zipCode = browser.findElement(by.model('ctrl.zipCode'));
+		var zipCode = browser.findElement(by.model('ctrl.user.zipCode'));
 		zipCode.sendKeys(attributes['zipCode']);
-		var givenName = browser.findElement(by.model('ctrl.givenName'));
+		var givenName = browser.findElement(by.model('ctrl.user.givenName'));
 		givenName.sendKeys(attributes['givenName']);
-		var surname = browser.findElement(by.model('ctrl.surname'));
+		var surname = browser.findElement(by.model('ctrl.user.surname'));
 		surname.sendKeys(attributes['surname']);
-		var phone = browser.findElement(by.model('ctrl.phone'));
+		var phone = browser.findElement(by.model('ctrl.user.phone'));
 		phone.sendKeys(attributes['phone']);
-		var adult = browser.findElement(by.model('ctrl.adult'));
+		var adult = browser.findElement(by.model('ctrl.user.adult'));
 		adult.click();
 
 		element(by.partialButtonText('Register')).click();
@@ -68,13 +68,13 @@ describe('Register', function() {
 
 		browser.getPart('register');
 
-		var zipCode = browser.findElement(by.model('ctrl.zipCode'));
+		var zipCode = browser.findElement(by.model('ctrl.user.zipCode'));
 		zipCode.sendKeys(attributes['zipCode']);
-		var givenName = browser.findElement(by.model('ctrl.givenName'));
+		var givenName = browser.findElement(by.model('ctrl.user.givenName'));
 		givenName.sendKeys(attributes['givenName']);
-		var surname = browser.findElement(by.model('ctrl.surname'));
+		var surname = browser.findElement(by.model('ctrl.user.surname'));
 		surname.sendKeys(attributes['surname']);
-		var phone = browser.findElement(by.model('ctrl.phone'));
+		var phone = browser.findElement(by.model('ctrl.user.phone'));
 		phone.sendKeys(attributes['phone']);
 
 		element(by.partialButtonText('Register')).click();
@@ -94,7 +94,7 @@ describe('Register', function() {
 				}
 			}
 		]);
-		expect(element(by.id('error')).isDisplayed()).to.eventually.equal(true);
+		expect(element(by.id('data-error')).isDisplayed()).to.eventually.equal(true);
 		expect(element.all(by.className('has-error')).count()).to.eventually.equal(1);
 
 	});

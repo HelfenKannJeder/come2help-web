@@ -1,44 +1,47 @@
-<form class="form-horizontal" ng-submit="ctrl.doRegister()">
+<form class="form-horizontal" ng-submit="ctrl.signup()">
 
-	<div ng-show="ctrl.errors" id="error" class="alert alert-danger" role="alert">{{ 'Please correct the highlighted fields.' | translate }}</div>
+	<div ng-show="ctrl.errors.badData" id="data-error" class="alert alert-danger" role="alert">{{ 'Please correct the highlighted fields.' | translate }}</div>
+	<div ng-show="ctrl.errors.message" id="error" class="alert alert-danger" role="alert"> {{ 'A fatal error occured' | translate}}:
+		<br />{{ ctrl.errors.message }}</div>
 
 	<div ng-class="['form-group', {'has-error': ctrl.errors.surname}, {'has-error': ctrl.errors.givenName}]">
 		<label for="surname" class="col-sm-2 control-label">{{ 'Name' | translate }}</label>
 		<div class="col-sm-5">
-			<input class="form-control" ng-model="ctrl.givenName" id="givenName" placeholder="{{ 'Givenname' | translate }}" value="" type="text">
+			<input class="form-control" ng-model="ctrl.user.givenName" id="givenName" placeholder="{{ 'Givenname' | translate }}" value="" type="text">
 		</div>
 		<div class="col-sm-5">
-			<input class="form-control" ng-model="ctrl.surname" name="surname" id="surname" placeholder="{{ 'Surname' | translate }}" value="" type="text">
+			<input class="form-control" ng-model="ctrl.user.surname" name="surname" id="surname" placeholder="{{ 'Surname' | translate }}" value="" type="text">
 		</div>
 	</div>
 	<div ng-class="['form-group', {'has-error': ctrl.errors.zipCode}]">
 		<label for="zipCode" class="col-sm-2 control-label">{{ 'Zip Code' | translate }}</label>
 		<div class="col-sm-10">
-			<input class="form-control" ng-model="ctrl.zipCode" name="city" id="zipCode" placeholder="{{ 'Zip Code' | translate }}" value="" type="text">
+			<input class="form-control" ng-model="ctrl.user.zipCode" name="city" id="zipCode" placeholder="{{ 'Zip Code' | translate }}" value="" type="text">
 		</div>
 	</div>
 	<div ng-class="['form-group', {'has-error': ctrl.errors.email}]">
 		<label for="email" class="col-sm-2 control-label">{{ 'E-Mail-Address' | translate }}</label>
 		<div class="col-sm-10">
-			<input class="form-control" ng-model="ctrl.email" name="email" id="email" placeholder="{{ 'E-Mail-Address' | translate }}" value="" type="text">
+			<input class="form-control" ng-model="ctrl.user.email" name="email" id="email" placeholder="{{ 'E-Mail-Address' | translate }}" value="" type="text">
 		</div>
 	</div>
 	<div ng-class="['form-group', {'has-error': ctrl.errors.phone}]">
 		<label for="phone" class="col-sm-2 control-label">{{ 'Phone' | translate }}</label>
 		<div class="col-sm-10">
-			<input class="form-control" ng-model="ctrl.phone" name="phone" id="phone" placeholder="{{ 'Phone' | translate }}" value="" type="text">
+			<input class="form-control" ng-model="ctrl.user.phone" name="phone" id="phone" placeholder="{{ 'Phone' | translate }}" value="" type="text">
 		</div>
 	</div>
 	<div ng-class="['form-group', {'has-error': ctrl.errors.adult}]">
 		<label for="adult" class="col-sm-2 control-label">{{ 'Is Adult' | translate }}</label>
 		<div class="col-sm-1">
-			<input class="form-control" ng-model="ctrl.adult" name="adult" id="adult" value="true" type="checkbox">
+			<input class="form-control" ng-model="ctrl.user.adult" name="adult" id="adult" value="true" type="checkbox">
 		</div>
 	</div>
 	<div ng-class="['form-group', {'has-error': ctrl.errors.abilities}]">
 		<label for="inputAbilities[]" class="col-sm-2 control-label">{{ 'Abilities' | translate }}</label>
 		<div class="col-sm-8" ng-repeat="ability in ctrl.abilities">
-			<input type="checkbox" name="inputAbilities[]" id="inputAbilities[]" value="{{ability.id}}"> <span>{{ability.name}}</span>
+			<input type="checkbox" name="inputAbilities[]" id="inputAbilities[]" value="{{ability.id}}">
+			<span>{{ability.name}}</span>
 		</div>
 	</div>
 	<div class="form-group">
