@@ -21,7 +21,7 @@ angular.module('Come2HelpApp', [
 				}).
 				when('/login', {
 					templateUrl: 'partials/login.html',
-					controller: 'LoginCtrl',
+					controller: 'LoginController',
 					controllerAs: 'ctrl',
 					resolve: {
 						skipIfLoggedIn: skipIfLoggedIn

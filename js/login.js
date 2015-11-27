@@ -1,16 +1,18 @@
 angular.module('Come2HelpController')
-	.controller('LoginCtrl', ['$scope', '$location', '$auth', function($scope, $location, $auth) {
-		$scope.error = null;
-		$scope.login = function() {
+	.controller('LoginController', ['$scope', '$location', '$auth', function($scope, $location, $auth) {
+		var vm = this;
+
+		vm.error = null;
+		vm.login = function() {
 			$auth.login($scope.user)
 				.then(function() {
 					$location.path('/');
 				})
 				.catch(function(error) {
-					$scope.error = error;
+					vm.error = error;
 				});
 		};
-		$scope.authenticate = function(provider) {
+		vm.authenticate = function(provider) {
 			$auth.authenticate(provider)
 				.then(function() {
 					$location.path('/');
@@ -18,12 +20,12 @@ angular.module('Come2HelpController')
 				.catch(function(error) {
 					if (error.error) {
 						// Popup error - invalid redirect_uri, pressed cancel button, etc.
-						$scope.error = error.error;
+						vm.error = error.error;
 					} else if (error.data) {
 						// HTTP response error from server
-						$scope.error = error.data.message;
+						vm.error = error.data.message;
 					} else {
-						$scope.error = error(error);
+						vm.error = error(error);
 					}
 				});
 		};
