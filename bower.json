@@ -22,7 +22,8 @@
 		"angular-translate": "~2.8.0",
 		"lodash": "~3.10.1",
 		"bootstrap": "~3.3.5",
-		"angular-google-maps": "~2.2.1"
+		"angular-google-maps": "~2.2.1",
+		"satellizer": "~0.13.1"
 	},
 	"resolutions": {
 		"angular": "1.4.6"
