@@ -2,7 +2,6 @@ angular.module('Come2HelpController')
 	.controller('LoginCtrl', ['$scope', '$location', '$auth', function($scope, $location, $auth) {
 		$scope.error = null;
 		$scope.login = function() {
-			console.log('login in LoginCtrl');
 			$auth.login($scope.user)
 				.then(function() {
 					$location.path('/');
