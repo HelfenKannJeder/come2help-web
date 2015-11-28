@@ -32,6 +32,7 @@
     "bower": "^1.6.3",
     "chai": "^3.3.0",
     "chai-as-promised": "^5.1.0",
+    "chai-properties": "^1.2.1",
     "closurecompiler": "^1.5.2",
     "colors": "^1.1.2",
     "connect": "^3.4.0",

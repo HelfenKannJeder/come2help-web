@@ -1,13 +1,77 @@
 require('./asserters')();
 
+var extend = require('extend');
+
 var mock = require('./http-mock');
 
 var attributes = {
-	zipCode: '76187',
+	address: {
+		zipCode: '76187'
+	},
 	givenName: 'Max',
 	surname: 'Mustermann',
 	phone: '0157812312335'
 };
+
+/**
+ * Enters the data provided into the browser registration form. Provide data in the API format!
+ *
+ * @param {Object} data The input data, in the API format.
+ * @return {void}
+ */
+function submit(data) {
+	// Enter Text
+	['givenName', 'surname', 'phone', 'email'].forEach(function(prop) {
+		if (data[prop]) {
+			var input = browser.findElement(by.model('ctrl.user.' + prop));
+			input.sendKeys(data[prop]);
+		}
+	});
+
+	['city', 'street', 'streetNumber', 'zipCode'].forEach(function(prop) {
+		if (data.address[prop]) {
+			var addressInput = browser.findElement(by.model('ctrl.user.' + prop));
+			addressInput.sendKeys(data.address[prop]);
+		}
+	});
+
+	// Check adult
+	if (data['adult']) {
+		var adult = browser.findElement(by.model('ctrl.user.adult'));
+		adult.click();
+	}
+
+	// Submit
+	element(by.partialButtonText('Register')).click();
+}
+
+/**
+ * Asserts that the provided request contained all data. The request is allowed to contain more, but not less data.
+ *
+ * @param {Object} request The request Object
+ * @param {Object} data    The data the request must contain, in the API format.
+ * @return {void}
+ */
+function assert(request, data) {
+	var dataWithoutAddress = extend({}, data);
+	delete dataWithoutAddress.address;
+
+	expect(request).to.contain.all.keys({
+		method: 'POST',
+		url: '/api/volunteers'
+	});
+	expect(request).to.have.property('data');
+	expect(request.data).to.have.properties(dataWithoutAddress);
+	if (data.address && data.address !== {}) {
+		expect(request.data).to.have.property('address');
+		expect(request.data.address).to.have.properties(data.address);
+	}
+}
+
+afterEach(function() {
+	mock.teardown();
+});
+
 
 describe('Register', function() {
 	this.timeout(2 * 60 * 1000);
@@ -25,77 +89,68 @@ describe('Register', function() {
 	});
 
 	it('allows to register with correct data', function() {
-		mock(['volunteers']);
+		var data = extend({
+			adult: true
+		}, attributes);
+
+		mock([{
+			request: {
+				path: '/api/volunteers',
+				method: 'POST'
+			},
+			response: {
+				data: extend({
+					id: 42
+				}, data)
+			}
+		}]);
 
 		browser.getPart('register');
 
-		var zipCode = browser.findElement(by.model('ctrl.user.zipCode'));
-		zipCode.sendKeys(attributes['zipCode']);
-		var givenName = browser.findElement(by.model('ctrl.user.givenName'));
-		givenName.sendKeys(attributes['givenName']);
-		var surname = browser.findElement(by.model('ctrl.user.surname'));
-		surname.sendKeys(attributes['surname']);
-		var phone = browser.findElement(by.model('ctrl.user.phone'));
-		phone.sendKeys(attributes['phone']);
-		var adult = browser.findElement(by.model('ctrl.user.adult'));
-		adult.click();
+		submit(data);
 
-		element(by.partialButtonText('Register')).click();
+		mock.requestsMade().then(function(requests) {
+			expect(requests).to.have.length(1);
+			assert(requests[0], data);
+		});
 
-		expect(mock.requestsMade()).to.eventually.deep.equal([
-			{
-				url : 'api/volunteers',
-				method : 'POST',
-				data: {
-					address: {
-						zipCode: attributes['zipCode']
-					},
-					adult: true,
-					givenName: attributes['givenName'],
-					surname: attributes['surname'],
-					phone: attributes['phone']
-				}
-			}
-		]);
-		expect(element(by.id('error')).isDisplayed()).to.eventually.equal(false);
-		// Currently the test does not recognize the page forward, so the next line will fail.
-		//expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Thank you');
+		expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Danke');
 
 	});
 
 	it('shows an error for adult=false', function() {
-		mock(['volunteers']);
+		mock([{
+			request: {
+				path: '/api/volunteers',
+				method: 'POST'
+			},
+			response: {
+				status: 400,
+				data: {
+					incidentId: '2a980d8c-4e98-49b4-aac7-a4faa7606a21',
+					clientErrors: [{
+						path: 'adult',
+						code: 'has to be true',
+						value: false
+					}]
+				}
+			}
+		}]);
 
 		browser.getPart('register');
 
-		var zipCode = browser.findElement(by.model('ctrl.user.zipCode'));
-		zipCode.sendKeys(attributes['zipCode']);
-		var givenName = browser.findElement(by.model('ctrl.user.givenName'));
-		givenName.sendKeys(attributes['givenName']);
-		var surname = browser.findElement(by.model('ctrl.user.surname'));
-		surname.sendKeys(attributes['surname']);
-		var phone = browser.findElement(by.model('ctrl.user.phone'));
-		phone.sendKeys(attributes['phone']);
+		var data = attributes;
 
-		element(by.partialButtonText('Register')).click();
+		submit(data);
 
-		expect(mock.requestsMade()).to.eventually.deep.equal([
-			{
-				url : 'api/volunteers',
-				method : 'POST',
-				data: {
-					address: {
-						zipCode: attributes['zipCode']
-					},
-					adult: false,
-					givenName: attributes['givenName'],
-					surname: attributes['surname'],
-					phone: attributes['phone']
-				}
-			}
-		]);
-		expect(element(by.id('data-error')).isDisplayed()).to.eventually.equal(true);
-		expect(element.all(by.className('has-error')).count()).to.eventually.equal(1);
+		mock.requestsMade().then(function(requests) {
+			expect(requests).to.have.length(1);
+			assert(requests[0], data);
+		});
+
+		expect(element(by.id('data-error')).isDisplayed()).to.eventually.equal(true, 'The input data error message must be shown.');
+		expect(element.all(by.className('has-error')).count()).to.eventually.equal(1, 'Exactly one input data error must be shown.');
+		expect(element(by.id('error')).isDisplayed()).to.eventually.equal(false, 'No general error may be shown');
 
 	});
 });
