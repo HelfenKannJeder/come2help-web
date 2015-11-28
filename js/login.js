@@ -4,7 +4,7 @@ angular.module('Come2HelpController')
 
 		vm.error = null;
 		vm.login = function() {
-			$auth.login($scope.user)
+			$auth.login(vm.user)
 				.then(function() {
 					$location.path('/');
 				})
