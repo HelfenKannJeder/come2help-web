@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = [{
 	request: {
 		path: '/volunteers',
 		method: 'GET'
@@ -22,4 +22,4 @@ module.exports = {
 			abilities: []
 		}]
 	}
-};
+}];
