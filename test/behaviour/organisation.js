@@ -22,13 +22,12 @@ describe('Volunteer List', function () {
 		var distance = browser.findElement(by.model('ctrl.distance'));
 		distance.sendKeys('10');
 
-		element(by.partialButtonText('Search')).click();
-
-
-		expect(element.all(volunteers).count()).to.eventually.equal(2);
-		for (var i = 0; i < 2; i++) {
-			expect(element(volunteers.column('volunteer.surname').row(i)).getInnerHtml()).to.eventually.contain('Mustermann');
-			expect(element(volunteers.column('volunteer.givenName').row(i)).getInnerHtml()).to.eventually.contain('Max');
-		}
+		element(by.partialButtonText('Search')).click(function () {
+			expect(element.all(volunteers).count()).to.eventually.equal(2);
+			for (var i = 0; i < 2; i++) {
+				expect(element(volunteers.column('volunteer.surname').row(i)).getInnerHtml()).to.eventually.contain('Mustermann');
+				expect(element(volunteers.column('volunteer.givenName').row(i)).getInnerHtml()).to.eventually.contain('Max');
+			}
+		});
 	});
 });
