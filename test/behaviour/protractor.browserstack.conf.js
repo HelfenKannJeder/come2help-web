@@ -100,7 +100,11 @@ exports.config = {
 		reporter: 'min'
 	},
 	specs: ['**/*.js'],
-	exclude: ['**/*.conf.js']
+	exclude: ['**/*.conf.js'],
+	mocks: {
+		dir: 'mocks',
+		default: ['default']
+	}
 };
 
 function key() {
