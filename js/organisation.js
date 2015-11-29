@@ -2,14 +2,23 @@ angular.module('Come2HelpController').factory('Volunteers', ['$resource', functi
 	return $resource('api/volunteers/:id');
 }]);
 
-angular.module('Come2HelpController').controller('VolunteerListController', ['Volunteers', function (Volunteers) {
+angular.module('Come2HelpController').controller('VolunteerListController', ['Volunteers', 'geocoder', function (Volunteers, geocoder) {
 	var vm = this;
 
-	Volunteers.query({
-		latitude: 49,
-		longitude: 8,
-		distance: 1000000000
-	}, function (data) {
-		vm.volunteers = data;
-	});
+	vm.volunteers = [];
+
+	vm.search = function () {
+		var result = geocoder.geocode('Germany, ' + vm.zipCode, function (results) {
+			var latitude = results.results[0].geometry.location.lat();
+			var longitude = results.results[0].geometry.location.lng();
+
+			Volunteers.query({
+				latitude: latitude,
+				longitude: longitude,
+				distance: vm.distance * 1000
+			}, function (data) {
+				vm.volunteers = data;
+			});
+		});
+	};
 }]);
