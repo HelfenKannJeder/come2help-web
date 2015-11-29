@@ -2,7 +2,8 @@ angular.module('Come2HelpApp', [
 	'ngRoute',
 	'Come2HelpController',
 	'uiGmapgoogle-maps',
-	'pascalprecht.translate'
+	'pascalprecht.translate',
+	'smart-table'
 ])
 	.config(['$routeProvider',
 		function ($routeProvider) {

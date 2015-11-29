@@ -1,14 +1,14 @@
 <h1>{{ 'Volunteers' | translate }}</h1>
-<table>
+<table class="table table-striped" st-table="ctrl.displayedVolunteers" st-safe-src="ctrl.volunteers">
 	<tr>
-		<th>{{ 'Given Name' | translate }}</th>
-		<th>{{ 'Surname' | translate }}</th>
-		<th>{{ 'Zip Code' | translate }}</th>
-		<th>{{ 'Phone' | translate }}</th>
-		<th>{{ 'E-Mail' | translate }}</th>
+		<th st-sort="givenName">{{ 'Given Name' | translate }}</th>
+		<th st-sort="surname">{{ 'Surname' | translate }}</th>
+		<th st-sort="address.zipCode">{{ 'Zip Code' | translate }}</th>
+		<th st-sort="phone">{{ 'Phone' | translate }}</th>
+		<th st-sort="email">{{ 'E-Mail' | translate }}</th>
 		<th>{{ 'Abilities' | translate }}</th>
 	</tr>
-	<tr ng-repeat="volunteer in ctrl.volunteers">
+	<tr ng-repeat="volunteer in ctrl.displayedVolunteers">
 		<td>{{volunteer.givenName}}</td>
 		<td>{{volunteer.surname}}</td>
 		<td>{{volunteer.address.zipCode}}</td>
