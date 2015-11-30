@@ -21,7 +21,7 @@ angular.module('Come2HelpApp', [
 	when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'LoginController',
-		controllerAs: 'user',
+		controllerAs: 'ctrl',
 		resolve: {
 			skipIfLoggedIn: skipIfLoggedIn
 		}
@@ -55,10 +55,12 @@ angular.module('Come2HelpApp', [
 	$authProvider.signupUrl = '/api/volunteers';
 
 	$authProvider.facebook({
-		clientId: 'Facebook App ID'
+		clientId: '417693555105063',
+		url: '/api/login/facebook'
 	});
 
 	$authProvider.google({
-		clientId: 'Google Client ID'
+		clientId: '924036387059-anhuh3kr3b6cnopsjs5gfk2t7sq2u43o.apps.googleusercontent.com',
+		url: '/api/login/google'
 	});
 }]);

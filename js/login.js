@@ -14,8 +14,12 @@ angular.module('Come2HelpController')
 		};
 		vm.authenticate = function(provider) {
 			$auth.authenticate(provider)
-				.then(function() {
-					$location.path('/');
+				.then(function(response) {
+					var token = response.data.token;
+					if (!token) {
+						throw new Error('The server sent an unintelligible response!');
+					}
+					$auth.setToken(response.data.token);
 				})
 				.catch(function(error) {
 					if (error.error) {
