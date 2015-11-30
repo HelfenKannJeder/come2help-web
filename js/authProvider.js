@@ -1,5 +1,4 @@
-angular.module('Come2HelpApp')
-.config(['$authProvider', function($authProvider) {
+angular.module('Come2HelpApp').config(['$authProvider', function($authProvider) {
 
 	$authProvider.signupUrl = '/api/volunteers';
 

@@ -5,3 +5,5 @@ angular.module('Come2HelpApp', [
 	'pascalprecht.translate',
 	'satellizer'
 ]);
+
+angular.module('Come2HelpController', ['ngResource']);
