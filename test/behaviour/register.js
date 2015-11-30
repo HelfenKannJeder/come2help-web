@@ -114,7 +114,7 @@ describe('Register', function() {
 			assert(requests[0], data);
 		});
 
-		expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Danke');
+		expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Thank');
 
 	});
 
