@@ -15,7 +15,7 @@ angular.module('Come2HelpController')
 			var transAbilities = [];
 			for (var abilityId in vm.user.abilities) {
 				if (vm.user.abilities.hasOwnProperty(abilityId) && vm.user.abilities[abilityId] === true) {
-					transAbilities.push(parseInt(abilityId));
+					transAbilities.push({id:parseInt(abilityId)});
 				}
 			}
 
