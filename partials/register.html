@@ -46,21 +46,21 @@
 						<label for="phone" class="sr-only">{{ 'Phone' | translate }}</label>
 						<input class="form-control" ng-model="ctrl.user.phone" name="phone" id="phone" placeholder="{{ 'Phone' | translate }}" value="" type="text">
 					</div>
-					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.abilities}]">
-						<span class="help-block">{{ 'Abilities' | translate }}</span>
-						<div ng-repeat="ability in ctrl.abilities">
-							<div class="checkbox">
+					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.abilities}, 'panel', 'panel-default', 'abilities-panel']">
+						<div class="panel-heading">{{ 'Abilities' | translate }}</div>
+						<div class="panel-body">
+							<div class="checkbox" ng-repeat="ability in ctrl.abilities">
 								<label>
 									<input type="checkbox" name="inputAbilities[]" ng-model="ctrl.user.abilities[ability.id]" value="{{ability.id}}"> {{ability.name}}
 								</label>
 							</div>
 						</div>
-						<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.adult}]">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" ng-model="ctrl.user.adult" name="adult" id="adult" required> {{ 'I’m an adult' | translate }}
-								</label>
-							</div>
+					</div>
+					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.adult}]">
+						<div class="checkbox adult-checkbox">
+							<label>
+								<input type="checkbox" ng-model="ctrl.user.adult" name="adult" id="adult" required> {{ 'I’m an adult' | translate }}
+							</label>
 						</div>
 					</div>
 
