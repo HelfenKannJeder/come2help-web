@@ -42,7 +42,7 @@ var write = process.stdout.write.bind(process.stdout);
  */
 var success = function(input, path) {
 	return function(result) {
-		var output = util.format.bind(util, input).apply(util, path ? relative(result) : result);
+		var output = util.format.bind(util, input).call(util, path ? relative(result) : result);
 		writeln(output.green);
 		writeln('');
 	};

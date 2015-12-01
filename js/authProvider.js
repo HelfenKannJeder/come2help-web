@@ -1,6 +1,7 @@
 angular.module('Come2HelpApp').config(['$authProvider', function($authProvider) {
 
 	$authProvider.signupUrl = '/api/volunteers';
+	$authProvider.loginUrl = '/api/login/volunteer';
 
 	$authProvider.facebook({
 		clientId: '417693555105063',

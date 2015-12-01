@@ -14,12 +14,17 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Surname': 'Surname',
 		'Zip Code': 'Zip Code',
 		'E-Mail-Address': 'E-Mail-Address',
+		'Password': 'Password',
 		'Phone': 'Phone',
-		'Is Adult': 'Is Adult',
+		'I’m an adult': 'I’m an adult',
 		'Abilities': 'Abilities',
 		'Please correct the highlighted fields.': 'Please correct the highlighted fields.',
 		'A fatal error occured': 'A fatal error occurred',
-		'Thank you for register!': 'Thank you for register!'
+		'Thank you for register!': 'Thank you for register!',
+		'Welcome to come2help!': 'Welcome to come2help!',
+		'or': 'or',
+		'Log in': 'Log in',
+		'Sign up': 'Sign up'
 	});
 
 	$translateProvider.translations('de', {
@@ -37,12 +42,17 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Surname': 'Nachname',
 		'Zip Code': 'PLZ',
 		'E-Mail-Address': 'E-Mail-Adresse',
+		'Password': 'Passwort',
 		'Phone': 'Telefonnummer',
-		'Is Adult': 'Volljährig?',
+		'I’m an adult': 'Ich bin volljährig',
 		'Abilities': 'Fähigkeiten',
 		'Please correct the highlighted fields.': 'Bitte korrigiere die hervorgebenen Felder.',
 		'A fatal error occured': 'Es ist ein unerwarteter Fehler aufgetreten',
-		'Thank you for register!': 'Danke für die Registrierung!'
+		'Thank you for register!': 'Danke für die Registrierung!',
+		'Welcome to come2help!': 'Willkommen bei come2help!',
+		'or': 'oder',
+		'Log in': 'Einloggen',
+		'Sign up': 'Registrieren'
 	});
 
 	$translateProvider.fallbackLanguage('en')

@@ -1,31 +1,98 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<h1 class="text-center login-heading">{{ 'Welcome to come2help!' | translate }}</h1>
+			<div ng-show="ctrl.errors.badData" id="data-error" class="alert alert-danger" role="alert">{{ 'Please correct the highlighted fields.' | translate }}</div>
+			<div ng-show="ctrl.errors.message" id="error" class="alert alert-danger" role="alert"> {{ 'A fatal error occured' | translate}}:
+				<br />{{ ctrl.errors.message }}</div>
 			<div class="panel-body">
-				<h2 class="text-center">Log in</h2>
-				<div ng-show="ctrl.error" id="error" class="alert alert-danger" role="alert">{{ ctrl.error }}</div>
-				<form method="post" ng-submit="ctrl.login()" name="loginForm">
-					<div class="form-group">
-						<input class="form-control input-lg" type="text" name="email" ng-model="ctrl.user.email" placeholder="Email" required autofocus>
+				<div ng-hide="ctrl.isSignup">
+					<div class="row">
+						<div class="col-md-5 col-md-offset-1">
+							<button class="btn btn-block btn-social btn-facebook btn-lg" ng-click="ctrl.authenticate('facebook')">
+								<span class="fa fa-facebook"></span> Facebook
+							</button>
+						</div>
+						<div class="col-md-5">
+							<button class="btn btn-block btn-social btn-google btn-lg" ng-click="ctrl.authenticate('google')">
+								<span class="fa fa-google"></span> Google
+							</button>
+						</div>
 					</div>
-					<div class="form-group">
-						<input class="form-control input-lg" type="password" name="password" ng-model="ctrl.user.password" placeholder="Password" required>
+					<p class="text-center text-muted login-separator">
+						{{ 'or' | translate }}
+					</p>
+				</div>
+				<form method="post" ng-submit="ctrl.submit()" name="loginForm">
+					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.email}]">
+						<label for="email" class="sr-only">{{ 'E-Mail-Address' | translate }}</label>
+						<input class="form-control input-lg" type="text" name="email" ng-model="ctrl.user.email" id="email" placeholder="{{ 'E-Mail-Address' | translate }}" required autofocus>
 					</div>
-					<button type="submit" class="btn btn-lg btn-block btn-success">Log in</button>
+					<div class="form-group" ng-hide="ctrl.isSignup">
+						<label for="password" class="sr-only">{{ 'Password' | translate }}</label>
+						<input class="form-control input-lg" type="password" name="password" id="password" ng-model="ctrl.user.password" placeholder="{{ 'Password' | translate }}" ng-required="!ctrl.isSignup">
+					</div>
+
+
+					<div ng-show="ctrl.isSignup">
+						<div ng-class="[ 'form-group', 'row', { 'has-error': ctrl.errors.surname}, { 'has-error': ctrl.errors.givenName}]">
+							<label for="surname" class="sr-only">{{ 'Name' | translate }}</label>
+							<div class="col-sm-6">
+								<input class="form-control input-lg" ng-model="ctrl.user.givenName" id="givenName" placeholder="{{ 'Givenname' | translate }}" value="" type="text">
+							</div>
+							<div class="col-sm-6">
+								<input class="form-control input-lg" ng-model="ctrl.user.surname" name="surname" id="surname" placeholder="{{ 'Surname' | translate }}" value="" type="text">
+							</div>
+						</div>
+						<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.zipCode}]">
+							<label for="zipCode" class="sr-only">{{ 'Zip Code' | translate }}</label>
+							<input class="form-control" ng-model="ctrl.user.zipCode" name="city" id="zipCode" placeholder="{{ 'Zip Code' | translate }}" value="" type="text">
+						</div>
+						<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.phone}]">
+							<label for="phone" class="sr-only">{{ 'Phone' | translate }}</label>
+							<input class="form-control" ng-model="ctrl.user.phone" name="phone" id="phone" placeholder="{{ 'Phone' | translate }}" value="" type="text">
+						</div>
+						<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.abilities}]">
+							<span class="help-block">{{ 'Abilities' | translate }}</span>
+							<div ng-repeat="ability in ctrl.abilities">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="inputAbilities[]" ng-model="ctrl.user.abilities[ability.id]" value="{{ability.id}}"> {{ability.name}}
+									</label>
+								</div>
+							</div>
+						</div>
+						<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.adult}]">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" ng-model="ctrl.user.adult" name="adult" id="adult" ng-required="ctrl.isSignup"> {{ 'I’m an adult' | translate }}
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" ng-hide="ctrl.isSignup">
+						<div class="col-md-5">
+							<button type="button" ng-click="ctrl.startSignup()" class="btn btn-lg btn-block btn-primary">{{ 'Sign up' | translate}}</button>
+						</div>
+						<div class="col-md-7">
+							<button type="submit" class="btn btn-lg btn-block btn-success">{{ 'Log in' | translate }}</button>
+						</div>
+					</div>
+
+					<div ng-show="ctrl.isSignup">
+						<button type="submit" class="btn btn-lg btn-block btn-primary">{{ 'Sign up' | translate}}</button>
+					</div>
 				</form>
-				<p class="text-center text-muted">
-					<small>Don't have an account yet? <a href="/#/register">Sign up</a></small>
-				</p>
-				<button class="btn btn-block btn-facebook" ng-click="ctrl.authenticate('facebook')">
-					<i class="ion-social-facebook"></i> Sign in with Facebook
-				</button>
-				<button class="btn btn-block btn-google-plus" ng-click="ctrl.authenticate('google')">
-					<span class="ion-social-googleplus"></span>Sign in with Google
-				</button>
-				<button class="btn btn-block btn-twitter" ng-click="ctrl.authenticate('twitter')">
-					<i class="ion-social-twitter"></i> Sign in with Twitter
-				</button>
 			</div>
 		</div>
+		<div class="sideimage col-md-6 col-md-offset-1"></div>
 	</div>
 </div>
+
+<form class="form-horizontal" ng-submit="ctrl.signup()">
+
+
+</form>

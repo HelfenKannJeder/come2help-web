@@ -1,14 +1,6 @@
 angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider) {
 
 	$routeProvider.
-	when('/register', {
-		templateUrl: 'partials/register.html',
-		controller: 'RegisterController',
-		controllerAs: 'ctrl',
-		resolve: {
-			skipIfLoggedIn: skipIfLoggedIn
-		}
-	}).
 	when('/register/done', {
 		templateUrl: 'partials/registerDone.html',
 		resolve: {
@@ -23,7 +15,7 @@ angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider
 			skipIfLoggedIn: skipIfLoggedIn
 		}
 	}).
-	otherwise('/register');
+	otherwise('/login');
 
 	function skipIfLoggedIn($q, $location, $auth) {
 		var deferred = $q.defer();

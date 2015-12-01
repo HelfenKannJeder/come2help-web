@@ -1,31 +1,33 @@
 {
-	"name": "come2help",
-	"version": "0.0.1",
-	"authors": [
-		"Valentin Zickner <zickner@querformatik.de>",
-		"Sebastian Richter <sebastian.max.richter@gmail.com>"
-	],
-	"main": "index.html",
-	"license": "GPL",
-	"homepage": "http://come2.help/",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests"
-	],
-	"dependencies": {
-		"jquery": "~2.1.4",
-		"angular-route": "~1.4.5",
-		"angular-resource": "~1.4.6",
-		"angular-translate": "~2.8.0",
-		"lodash": "~3.10.1",
-		"bootstrap": "~3.3.5",
-		"angular-google-maps": "~2.2.1",
-		"satellizer": "~0.13.1"
-	},
-	"resolutions": {
-		"angular": "1.4.6"
-	}
+  "name": "come2help",
+  "version": "0.0.1",
+  "authors": [
+    "Valentin Zickner <zickner@querformatik.de>",
+    "Sebastian Richter <sebastian.max.richter@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "GPL",
+  "homepage": "http://come2.help/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular-route": "~1.4.5",
+    "angular-resource": "~1.4.6",
+    "angular-translate": "~2.8.0",
+    "lodash": "~3.10.1",
+    "bootstrap": "~3.3.5",
+    "angular-google-maps": "~2.2.1",
+    "satellizer": "~0.13.1",
+    "bootstrap-social": "~4.11.0",
+    "font-awesome": "~4.5.0"
+  },
+  "resolutions": {
+    "angular": "1.4.6"
+  }
 }
