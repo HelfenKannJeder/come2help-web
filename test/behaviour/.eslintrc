@@ -32,7 +32,9 @@
 		"expect": false,
 		"baseUrl": false,
 		"element": false,
-		"by": false
+		"by": false,
+		"$": false,
+		"$$": false
 	},
 	"extends": "eslint:recommended"
 }

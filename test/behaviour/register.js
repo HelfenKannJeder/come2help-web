@@ -5,6 +5,7 @@ var extend = require('extend');
 var mock = require('./http-mock');
 
 var attributes = {
+	email: 'max@mustermann.de',
 	address: {
 		zipCode: '76187'
 	},
@@ -19,7 +20,7 @@ var attributes = {
  * @param {Object} data The input data, in the API format.
  * @return {void}
  */
-function submit(data) {
+function signupWith(data) {
 	// Enter Text
 	['givenName', 'surname', 'phone', 'email'].forEach(function(prop) {
 		if (data[prop]) {
@@ -42,7 +43,7 @@ function submit(data) {
 	}
 
 	// Submit
-	element(by.partialButtonText('Register')).click();
+	$('button[type="submit"]').click();
 }
 
 /**
@@ -73,7 +74,7 @@ afterEach(function() {
 });
 
 
-describe('Register', function() {
+describe('Registration Form', function() {
 	this.timeout(2 * 60 * 1000);
 
 	var abilitylist = by.repeater('ability in ctrl.abilities');
@@ -99,58 +100,24 @@ describe('Register', function() {
 				method: 'POST'
 			},
 			response: {
-				data: extend({
-					id: 42
-				}, data)
-			}
-		}]);
-
-		browser.getPart('register');
-
-		submit(data);
-
-		mock.requestsMade().then(function(requests) {
-			expect(requests).to.have.length(1);
-			assert(requests[0], data);
-		});
-
-		expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Thank');
-
-	});
-
-	it('shows an error for adult=false', function() {
-		mock([{
-			request: {
-				path: '/api/volunteers',
-				method: 'POST'
-			},
-			response: {
-				status: 400,
 				data: {
-					incidentId: '2a980d8c-4e98-49b4-aac7-a4faa7606a21',
-					clientErrors: [{
-						path: 'adult',
-						code: 'has to be true',
-						value: false
-					}]
+					token: 'abc'
 				}
 			}
 		}]);
 
 		browser.getPart('register');
 
-		var data = attributes;
-
-		submit(data);
+		signupWith(data);
 
 		mock.requestsMade().then(function(requests) {
 			expect(requests).to.have.length(1);
 			assert(requests[0], data);
 		});
 
-		expect(element(by.id('data-error')).isDisplayed()).to.eventually.equal(true, 'The input data error message must be shown.');
-		expect(element.all(by.className('has-error')).count()).to.eventually.equal(1, 'Exactly one input data error must be shown.');
-		expect(element(by.id('error')).isDisplayed()).to.eventually.equal(false, 'No general error may be shown');
+		browser.getPart('register');
+
+		expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Thank');
 
 	});
 });
