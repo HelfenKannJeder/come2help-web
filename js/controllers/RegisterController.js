@@ -61,11 +61,11 @@ angular.module('Come2HelpController')
 		};
 
 		function handleResponse(response) {
-			var token = response.data.token;
+			var token = response.headers('authorization');
 			if (!token) {
 				throw new Error('The server sent an unintelligible response!');
 			}
-			$auth.setToken(response.data.token);
+			$auth.setToken(token);
 			$route.reload();
 		}
 

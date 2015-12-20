@@ -100,8 +100,10 @@ describe('Registration Form', function() {
 				method: 'POST'
 			},
 			response: {
+				headers: {
+					authorization: 'token'
+				},
 				data: {
-					token: 'abc'
 				}
 			}
 		}]);
@@ -118,6 +120,5 @@ describe('Registration Form', function() {
 		browser.getPart('register');
 
 		expect(element(by.tagName('h1')).getInnerHtml()).to.eventually.contain('Thank');
-
 	});
 });
