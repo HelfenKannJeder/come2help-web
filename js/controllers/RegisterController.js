@@ -61,12 +61,6 @@ angular.module('Come2HelpController')
 		};
 
 		function handleResponse(response) {
-			var token = response.headers('authorization');
-			if (!token) {
-				throw new Error('The server sent an unintelligible response!');
-			}
-			$auth.setToken(token);
-			$route.reload();
 		}
 
 		function handleError(response) {
