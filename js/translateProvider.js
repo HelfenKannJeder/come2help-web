@@ -1,4 +1,6 @@
 angular.module('Come2HelpApp').config(['$translateProvider', function ($translateProvider) {
+	$translateProvider.useSanitizeValueStrategy('escapeParameters');
+
 	$translateProvider.translations('en', {
 		'Map': 'Map',
 		'List': 'List',
