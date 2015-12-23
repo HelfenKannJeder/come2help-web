@@ -5,13 +5,15 @@ var extend = require('extend');
 var mock = require('./http-mock');
 
 var attributes = {
-	email: 'max@mustermann.de',
-	address: {
-		zipCode: '76187'
-	},
-	givenName: 'Max',
-	surname: 'Mustermann',
-	phone: '0157812312335'
+	user: {
+		email: 'max@mustermann.de',
+		address: {
+			zipCode: '76187'
+		},
+		givenName: 'Max',
+		surname: 'Mustermann',
+		phone: '0157812312335'
+	}
 };
 
 /**
@@ -22,22 +24,22 @@ var attributes = {
  */
 function signupWith(data) {
 	// Enter Text
-	['givenName', 'surname', 'phone', 'email'].forEach(function(prop) {
-		if (data[prop]) {
+	['givenName', 'surname', 'phone', 'email'].forEach(function (prop) {
+		if (data.user[prop]) {
 			var input = browser.findElement(by.model('ctrl.user.' + prop));
-			input.sendKeys(data[prop]);
+			input.sendKeys(data.user[prop]);
 		}
 	});
 
-	['city', 'street', 'streetNumber', 'zipCode'].forEach(function(prop) {
-		if (data.address[prop]) {
+	['city', 'street', 'streetNumber', 'zipCode'].forEach(function (prop) {
+		if (data.user.address[prop]) {
 			var addressInput = browser.findElement(by.model('ctrl.user.' + prop));
-			addressInput.sendKeys(data.address[prop]);
+			addressInput.sendKeys(data.user.address[prop]);
 		}
 	});
 
 	// Check adult
-	if (data['adult']) {
+	if (data.user['adult']) {
 		var adult = browser.findElement(by.model('ctrl.user.adult'));
 		adult.click();
 	}
@@ -69,17 +71,17 @@ function assert(request, data) {
 	}
 }
 
-afterEach(function() {
+afterEach(function () {
 	mock.teardown();
 });
 
 
-describe('Registration Form', function() {
+describe('Registration Form', function () {
 	this.timeout(2 * 60 * 1000);
 
 	var abilitylist = by.repeater('ability in ctrl.abilities');
 
-	it('has two entries: "Mocked Ability 1" and "Mocked Ability 2"', function() {
+	it('has two entries: "Mocked Ability 1" and "Mocked Ability 2"', function () {
 		mock(['abilities']);
 
 		browser.getPart('register');
@@ -89,10 +91,9 @@ describe('Registration Form', function() {
 		expect(element(abilitylist.column('ability.name').row(1)).getInnerHtml()).to.eventually.contain('Mocked Ability');
 	});
 
-	it('allows to register with correct data', function() {
-		var data = extend({
-			adult: true
-		}, attributes);
+	it('allows to register with correct data', function () {
+		var data = extend({}, attributes);
+		data.user.adult = true;
 
 		mock([{
 			request: {
@@ -101,10 +102,9 @@ describe('Registration Form', function() {
 			},
 			response: {
 				headers: {
-					authorization: 'token'
+					authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicHJvdmlkZXIiOiJnb29nbGUiLCJleHQtaWQiOiIxMDQ2MDE5NDA4NDY5NzE5MzY5MzciLCJuYW1lIjoiQmVybmQiLCJzdXJuYW1lIjoiTWFpZXIiLCJlbWFpbCI6ImJlcm5kLm1haWVyQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfVk9MVU5URUVSIl0sImlhdCI6MTQ1MDg5NjE2MywiZXhwIjoxNDUwODk5NzYzfQ.kjT-X-xdHtDUR94vii8nwlXGp3g9pE-BsO5_Fd-TKEc'
 				},
-				data: {
-				}
+				data: {}
 			}
 		}]);
 
@@ -112,7 +112,7 @@ describe('Registration Form', function() {
 
 		signupWith(data);
 
-		mock.requestsMade().then(function(requests) {
+		mock.requestsMade().then(function (requests) {
 			expect(requests).to.have.length(1);
 			assert(requests[0], data);
 		});

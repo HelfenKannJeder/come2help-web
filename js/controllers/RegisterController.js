@@ -43,19 +43,21 @@ angular.module('Come2HelpController')
 			}
 
 			// user transport object
-			var transUser = {
+			var volunteer = {
 				abilities: transAbilities,
-				address: {
-					zipCode: vm.user.zipCode || ''
-				},
-				adult: vm.user.adult === true,
-				email: vm.user.email || '',
-				givenName: vm.user.givenName || '',
-				phone: vm.user.phone || '',
-				surname: vm.user.surname || ''
+				user: {
+					address: {
+						zipCode: vm.user.zipCode || ''
+					},
+					adult: vm.user.adult === true,
+					email: vm.user.email || '',
+					givenName: vm.user.givenName || '',
+					phone: vm.user.phone || '',
+					surname: vm.user.surname || ''
+				}
 			};
 
-			$auth.signup(transUser)
+			$auth.signup(volunteer)
 				.then(handleResponse)
 				.catch(handleError);
 		};
