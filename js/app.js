@@ -2,7 +2,8 @@ angular.module('Come2HelpApp', [
 	'ngRoute',
 	'Come2HelpController',
 	'uiGmapgoogle-maps',
-	'pascalprecht.translate'
+	'pascalprecht.translate',
+	'smart-table'
 ])
 	.config(['$routeProvider',
 		function ($routeProvider) {
@@ -14,6 +15,11 @@ angular.module('Come2HelpApp', [
 				}).
 				when('/register/done', {
 					templateUrl: 'partials/registerDone.html'
+				}).
+				when('/organisation/volunteerList', {
+					templateUrl: 'partials/organisation/volunteerList.html',
+					controller: 'VolunteerListController',
+					controllerAs: 'ctrl'
 				}).
 				otherwise({
 					redirectTo: '/register'
