@@ -28,48 +28,48 @@ exports.config = {
 			'os': 'Windows',
 			'os_version': '7'
 		},
-		/* Fails to run! ('Not implemented')
-	{
-		'browser': 'Edge',
-		'browser_version': '12.0',
-		'os': 'Windows',
-		'os_version': '10'
-	}, */
+		/* "Error: not implemented"
+			{
+				'browser': 'Edge',
+				'browser_version': '12.0',
+				'os': 'Windows',
+				'os_version': '10'
+			},*/
+
 		{
 			'browserName': 'android',
 			'platform': 'ANDROID',
 			'device': 'Samsung Galaxy S5'
 		},
-		/* All below browsers fail to run on browserstack.
+		/* "This feature will be implemented soon"
 		{
 			'browserName' : 'android',
 			'platform' : 'ANDROID',
 			'device' : 'Google Nexus 4'
-		}, {
+		},*/
+		/* Times out
+		 {
 			'browserName': 'android',
 			'platform': 'ANDROID',
 			'device': 'Google Nexus 5'
-		}, {
+		}, */
+		{
 			'browserName': 'iPhone',
 			'platform': 'MAC',
 			'device': 'iPhone 6'
 		}, {
-			'browserName': 'iPhone',
-			'platform': 'MAC',
-			'device': 'iPhone 5'
-		}, {
 			'browserName': 'iPad',
 			'platform': 'MAC',
 			'device': 'iPad Air'
-		}, {
-			'browser': 'Safari',
-			'browser_version': '8.0',
-			'os': 'OS X',
-			'os_version': 'Yosemite'
-		}, */
+		}, // Older iOS versions don’t work yet, too
 		{
+			'browser': 'Safari',
+			'browser_version': '9.0',
+			'os': 'OS X',
+			'os_version': 'El Capitan'
+		}, {
 			'browser': 'Firefox',
-			'browser_version': '41.0',
+			'browser_version': '42.0',
 			'os': 'Windows',
 			'os_version': '10'
 		}, {
