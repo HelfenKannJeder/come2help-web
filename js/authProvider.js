@@ -48,14 +48,11 @@ angular.module('Come2HelpApp').service('jwtService', ['authService', '$window', 
 
 	this.isAuthenticated = function() {
 		return jwt != null;
-	}
+	};
 
 	this.parseJWT = function (token) {
 		$auth.setToken(token);
-
-		var base64Url = token.split('.')[1];
-		var base64 = base64Url.replace('-', '+').replace('_', '/');
-		jwt = angular.fromJson($window.atob(base64));
+		jwt = $auth.getPayload();
 		$route.reload();
 	};
 

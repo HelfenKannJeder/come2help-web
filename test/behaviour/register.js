@@ -102,7 +102,7 @@ describe('Registration Form', function () {
 			},
 			response: {
 				headers: {
-					authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicHJvdmlkZXIiOiJnb29nbGUiLCJleHQtaWQiOiIxMDQ2MDE5NDA4NDY5NzE5MzY5MzciLCJuYW1lIjoiQmVybmQiLCJzdXJuYW1lIjoiTWFpZXIiLCJlbWFpbCI6ImJlcm5kLm1haWVyQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfVk9MVU5URUVSIl0sImlhdCI6MTQ1MDg5NjE2MywiZXhwIjoxNDUwODk5NzYzfQ.kjT-X-xdHtDUR94vii8nwlXGp3g9pE-BsO5_Fd-TKEc'
+					authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwicHJvdmlkZXIiOiJnb29nbGUiLCJleHQtaWQiOiIxMDQ2MDE5NDA4NDY5NzE5MzY5MzciLCJuYW1lIjoiQmVybmQiLCJzdXJuYW1lIjoiTWFpZXIiLCJlbWFpbCI6ImJlcm5kLm1haWVyQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfVVNFUiIsIlJPTEVfVk9MVU5URUVSIl0sImlhdCI6MTQ1MDg5NjE2MywiZXhwIjo5OTk5OTk5OTk5OX0.dh7ykcvVp_d2Kx2sbQTZOjSPQhYSyeWFpd7s4q9aLF8'
 				},
 				data: {}
 			}
