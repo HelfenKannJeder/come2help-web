@@ -15,6 +15,11 @@ angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider
 			skipIfLoggedIn: skipIfLoggedIn
 		}
 	}).
+	when('/organisation/volunteerList', {
+		templateUrl: 'partials/organisation/volunteerList.html',
+		controller: 'VolunteerListController',
+		controllerAs: 'ctrl'
+	}).
 	otherwise('/register');
 
 	function skipIfLoggedIn($q, $location, $auth, jwtService) {
