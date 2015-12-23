@@ -34,15 +34,15 @@
 					<div ng-class="[ 'form-group', 'row', { 'has-error': ctrl.errors.surname}, { 'has-error': ctrl.errors.givenName}]">
 						<label for="surname" class="sr-only">{{ 'Name' | translate }}</label>
 						<div class="col-sm-6">
-							<input class="form-control input-lg" ng-model="ctrl.user.givenName" id="givenName" placeholder="{{ 'Givenname' | translate }}" value="" type="text">
+							<input class="form-control input-lg" ng-model="ctrl.user.givenName" id="givenName" placeholder="{{ 'Givenname' | translate }}" value="" type="text" required>
 						</div>
 						<div class="col-sm-6">
-							<input class="form-control input-lg" ng-model="ctrl.user.surname" name="surname" id="surname" placeholder="{{ 'Surname' | translate }}" value="" type="text">
+							<input class="form-control input-lg" ng-model="ctrl.user.surname" name="surname" id="surname" placeholder="{{ 'Surname' | translate }}" value="" type="text" required>
 						</div>
 					</div>
 					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.zipCode}]">
 						<label for="zipCode" class="sr-only">{{ 'Zip Code' | translate }}</label>
-						<input class="form-control" ng-model="ctrl.user.zipCode" name="city" id="zipCode" placeholder="{{ 'Zip Code' | translate }}" value="" type="text">
+						<input class="form-control" ng-model="ctrl.user.zipCode" name="city" id="zipCode" placeholder="{{ 'Zip Code' | translate }}" value="" type="text" required>
 					</div>
 					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.phone}]">
 						<label for="phone" class="sr-only">{{ 'Phone' | translate }}</label>
