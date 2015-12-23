@@ -14,22 +14,28 @@ angular.module('Come2HelpApp').config(['$authProvider', function ($authProvider)
 	});
 }]);
 
-angular.module('Come2HelpApp').provider('authService', [function() {
-	var token = null;
+angular.module('Come2HelpApp')
+	.constant('roles', {
+		USER: 'ROLE_USER',
+		GUEST: 'ROLE_GUEST',
+		VOLUNTEER: 'ROLE_VOLUNTEER',
+		ORGANISATION_ADMIN: 'ROLE_ORGANISATION_ADMIN',
+		C2H_ADMIN: 'ROLE_C2H_ADMIN'
+	});
+
+angular.module('Come2HelpApp').provider('authService', [function () {
 	var tokenObservers = [];
 
-	this.setToken = function(token) {
-		this.token = token;
-
+	this.setToken = function (token) {
 		tokenObservers.forEach(function (tokenObserver) {
 			tokenObserver(token);
 		});
 
 	};
 
-	this.$get = function() {
+	this.$get = function () {
 		return {
-			addTokenObserver: function(tokenObserver) {
+			addTokenObserver: function (tokenObserver) {
 				tokenObservers.push(tokenObserver);
 			}
 		};
@@ -37,29 +43,53 @@ angular.module('Come2HelpApp').provider('authService', [function() {
 
 }]);
 
-angular.module('Come2HelpApp').service('jwtService', ['authService', '$window', '$auth', '$route', function (authService, $window, $auth, $route) {
+angular.module('Come2HelpApp').service('jwtService', ['authService', '$window', '$auth', 'roles', '$route', function (authService, $window, $auth, roles, $route) {
 	var jwt = null;
 
-	this.parseJWT = function(token) {
+	this.isAuthenticated = function() {
+		return jwt != null;
+	}
+
+	this.parseJWT = function (token) {
 		$auth.setToken(token);
 
 		var base64Url = token.split('.')[1];
 		var base64 = base64Url.replace('-', '+').replace('_', '/');
 		jwt = angular.fromJson($window.atob(base64));
-
 		$route.reload();
 	};
 
-	this.getJWT = function() {
-		return jwt;
-	}
+	this.logout = function() {
+		jwt = null;
 
+		$auth.removeToken();
+		$route.reload();
+	};
+
+	this.getJWT = function () {
+		return jwt;
+	};
+
+	this.hasAuthority = function (authority) {
+		if (jwt != null && jwt.authorities == undefined) {
+			return false;
+		}
+		return jwt.authorities.indexOf(authority) != -1;
+	};
+
+	this.isGuest = function () {
+		return jwt == null && jwt.authorities.length == 0 || this.hasAuthority(roles.GUEST);
+	};
+
+	if ($auth.getToken()) {
+		this.parseJWT($auth.getToken());
+	}
 	authService.addTokenObserver(this.parseJWT);
 }]);
 
 angular.module('Come2HelpApp').config(['$httpProvider', 'authServiceProvider', function ($httpProvider, authServiceProvider) {
-	$httpProvider.interceptors.push(function ($q, $log) {
-		var readTokenInterceptor = {
+	$httpProvider.interceptors.push(function ($q) {
+		return {
 			response: function (config) {
 				var deferred = $q.defer();
 
@@ -72,6 +102,5 @@ angular.module('Come2HelpApp').config(['$httpProvider', 'authServiceProvider', f
 				return deferred.promise;
 			}
 		};
-		return readTokenInterceptor;
 	});
 }]);

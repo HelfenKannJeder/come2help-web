@@ -17,9 +17,9 @@ angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider
 	}).
 	otherwise('/register');
 
-	function skipIfLoggedIn($q, $location, $auth) {
+	function skipIfLoggedIn($q, $location, $auth, jwtService) {
 		var deferred = $q.defer();
-		if ($auth.isAuthenticated()) {
+		if ($auth.isAuthenticated() && !jwtService.isGuest()) {
 			$location.path('/register/done');
 		} else {
 			deferred.resolve();
@@ -27,9 +27,9 @@ angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider
 		return deferred.promise;
 	}
 
-	function loginRequired($q, $location, $auth) {
+	function loginRequired($q, $location, $auth, jwtService) {
 		var deferred = $q.defer();
-		if ($auth.isAuthenticated()) {
+		if ($auth.isAuthenticated() && !jwtService.isGuest()) {
 			deferred.resolve();
 		} else {
 			$location.path('/login');

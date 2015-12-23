@@ -4,23 +4,25 @@
 			<h1 class="text-center login-heading">{{ 'Welcome to come2help!' | translate }}</h1>
 			<div ng-show="ctrl.errors.badData" id="data-error" class="alert alert-danger" role="alert">{{ 'Please correct the highlighted fields.' | translate }}</div>
 			<div ng-show="ctrl.errors.message" id="error" class="alert alert-danger" role="alert"> {{ 'A fatal error occured' | translate}}:
-				<br />{{ ctrl.errors.message }}</div>
+				<br/>{{ ctrl.errors.message }}</div>
 			<div class="panel-body">
-				<div class="row">
-					<div class="col-md-5 col-md-offset-1">
-						<button class="btn btn-block btn-social btn-facebook btn-lg" ng-click="ctrl.authenticate('facebook')">
-							<span class="fa fa-facebook"></span> Facebook
-						</button>
+				<div ng-hide="ctrl.isSignup()">
+					<div class="row">
+						<div class="col-md-5 col-md-offset-1">
+							<button class="btn btn-block btn-social btn-facebook btn-lg" ng-click="ctrl.authenticate('facebook')">
+								<span class="fa fa-facebook"></span> Facebook
+							</button>
+						</div>
+						<div class="col-md-5">
+							<button class="btn btn-block btn-social btn-google btn-lg" ng-click="ctrl.authenticate('google')">
+								<span class="fa fa-google"></span> Google
+							</button>
+						</div>
 					</div>
-					<div class="col-md-5">
-						<button class="btn btn-block btn-social btn-google btn-lg" ng-click="ctrl.authenticate('google')">
-							<span class="fa fa-google"></span> Google
-						</button>
-					</div>
+					<p class="text-center text-muted login-separator">
+						{{ 'or' | translate }}
+					</p>
 				</div>
-				<p class="text-center text-muted login-separator">
-					{{ 'or' | translate }}
-				</p>
 
 				<form method="post" ng-submit="ctrl.signup()" name="loginForm">
 					<div ng-class="[ 'form-group', { 'has-error': ctrl.errors.email}]">

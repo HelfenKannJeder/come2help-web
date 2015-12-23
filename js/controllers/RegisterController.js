@@ -1,12 +1,12 @@
 angular.module('Come2HelpController')
-	.controller('RegisterController', ['Abilities', '$route', '$auth', '$window', function(Abilities, $route, $auth, $window) {
+	.controller('RegisterController', ['Abilities', '$route', '$auth', 'jwtService', function (Abilities, $route, $auth, jwtService) {
 		var vm = this;
 
 		vm.errors = null;
 		vm.user = {};
-		vm.isSignup = false;
+		vm.isSignup = jwtService.isAuthenticated.bind(jwtService);
 
-		Abilities.query(function(data) {
+		Abilities.query(function (data) {
 			vm.abilities = data;
 		});
 
@@ -61,7 +61,18 @@ angular.module('Come2HelpController')
 		};
 
 		function handleResponse(response) {
-		}
+			fillForm();
+		};
+
+		function fillForm() {
+			var jwt = jwtService.getJWT();
+
+			if (jwt) {
+				vm.user.email = jwt.email;
+				vm.user.givenName = jwt.name;
+				vm.user.surname = jwt.surname;
+			}
+		};
 
 		function handleError(response) {
 			vm.errors = {};
@@ -75,5 +86,7 @@ angular.module('Come2HelpController')
 			} else {
 				vm.errors.message = response.data;
 			}
-		}
+		};
+
+		fillForm();
 	}]);
