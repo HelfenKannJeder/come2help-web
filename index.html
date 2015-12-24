@@ -23,31 +23,41 @@
 	<script src="js/controllers/RegisterController.js"></script>
 	<script src="js/controllers/NavigationController.js"></script>
 	<script src="js/controllers/VolunteerListController.js"></script>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
-	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="build/css/style.css" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css"/>
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="build/css/style.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 
 <body>
 
-	<div class="container">
-		<nav class="navbar navbar-default" ng-controller="NavigationController as ctrl">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="http://come2.help/">come2.help</a>
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right" ng-show="ctrl.authenticated()">
-						<li><a href="" ng-click="ctrl.logout()">{{ 'Logout' | translate }}</a></li>
-					</ul>
-				</div>
+<div class="container">
+	<nav class="navbar navbar-default" ng-controller="NavigationController as ctrl">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/">come2.help</a>
 			</div>
-		</nav>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav" ng-show="ctrl.isGuest()">
+					<li ng-class="ctrl.getClass('/register')"><a href="#/register">{{ 'Register' | translate }}</a></li>
+				</ul>
+				<ul class="nav navbar-nav" ng-show="ctrl.isOrganisation()">
+					<li ng-class="ctrl.getClass('/organisation/volunteerList')"><a href="#/organisation/volunteerList">
+						{{ 'Volunteers' | translate }}</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li ng-class="ctrl.getClass('/imprint')"><a href="#/imprint">{{ 'Imprint' | translate }}</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" ng-show="ctrl.authenticated()">
+					<li><a href="" ng-click="ctrl.logout()">{{ 'Logout' | translate }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-		<div ng-view></div>
-	</div>
+	<div ng-view></div>
+</div>
 </body>
 
 </html>

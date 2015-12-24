@@ -1,4 +1,4 @@
-angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider) {
+angular.module('Come2HelpApp').config(['$routeProvider', function ($routeProvider) {
 
 	$routeProvider.
 	when('/register/done', {
@@ -18,7 +18,14 @@ angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider
 	when('/organisation/volunteerList', {
 		templateUrl: 'partials/organisation/volunteerList.html',
 		controller: 'VolunteerListController',
-		controllerAs: 'ctrl'
+		controllerAs: 'ctrl',
+		//resolve: {
+		//	loginRequired: loginRequired,
+		//	organisationAdminRequired: organisationAdminRequired
+		//}
+	}).
+	when('/imprint', {
+		templateUrl: 'partials/imprint.html'
 	}).
 	otherwise('/register');
 
@@ -37,8 +44,18 @@ angular.module('Come2HelpApp').config(['$routeProvider', function($routeProvider
 		if ($auth.isAuthenticated() && !jwtService.isGuest()) {
 			deferred.resolve();
 		} else {
-			$location.path('/login');
+			$location.path('/register');
 		}
 		return deferred.promise;
 	}
+
+	function organisationAdminRequired($q, $location, jwtService) {
+		var deferred = $q.defer();
+		if (jwtService.isOrganisation()) {
+			deferred.resolve();
+		} else {
+			$location.path('/');
+		}
+		return deferred.promise;
+	};
 }]);

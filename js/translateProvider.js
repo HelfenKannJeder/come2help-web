@@ -13,6 +13,7 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Tasks': 'Tasks',
 		'Name': 'Name',
 		'Givenname': 'Givenname',
+		'Given Name': 'Givenname',
 		'Surname': 'Surname',
 		'Zip Code': 'Zip Code',
 		'E-Mail-Address': 'E-Mail-Address',
@@ -26,7 +27,13 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Welcome to come2help!': 'Welcome to come2help!',
 		'or': 'or',
 		'Log in': 'Log in',
-		'Sign up': 'Sign up'
+		'Sign up': 'Sign up',
+		'Register': 'Register',
+		'Volunteers': 'Volunteers',
+		'Imprint': 'Imprint',
+		'Logout': 'Logout',
+		'Search': 'Search',
+		'Distance': 'Distance'
 	});
 
 	$translateProvider.translations('de', {
@@ -41,6 +48,7 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Tasks': 'Aufgaben',
 		'Name': 'Name',
 		'Givenname': 'Vorname',
+		'Given Name': 'Vorname',
 		'Surname': 'Nachname',
 		'Zip Code': 'PLZ',
 		'E-Mail-Address': 'E-Mail-Adresse',
@@ -54,7 +62,13 @@ angular.module('Come2HelpApp').config(['$translateProvider', function ($translat
 		'Welcome to come2help!': 'Willkommen bei come2help!',
 		'or': 'oder',
 		'Log in': 'Einloggen',
-		'Sign up': 'Registrieren'
+		'Sign up': 'Registrieren',
+		'Register': 'Registrierung',
+		'Volunteers': 'Helferliste',
+		'Imprint': 'Impressum',
+		'Logout': 'Abmelden',
+		'Search': 'Suche',
+		'Distance': 'Entfernung'
 	});
 
 	$translateProvider.fallbackLanguage('en')

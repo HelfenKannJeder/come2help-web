@@ -68,14 +68,18 @@ angular.module('Come2HelpApp').service('jwtService', ['authService', '$window', 
 	};
 
 	this.hasAuthority = function (authority) {
-		if (jwt != null && jwt.authorities == undefined) {
+		if (jwt == null || jwt.authorities == undefined) {
 			return false;
 		}
 		return jwt.authorities.indexOf(authority) != -1;
 	};
 
 	this.isGuest = function () {
-		return jwt == null && jwt.authorities.length == 0 || this.hasAuthority(roles.GUEST);
+		return jwt == null || jwt.authorities.length == 0 || this.hasAuthority(roles.GUEST);
+	};
+
+	this.isOrganisation = function () {
+		return this.hasAuthority(roles.ORGANISATION_ADMIN);
 	};
 
 	if ($auth.getToken()) {
