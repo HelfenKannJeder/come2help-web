@@ -23,3 +23,11 @@ body {
 .adult-checkbox {
 	margin-top: 1em;
 }
+
+table#volunteer-list {
+  th {
+	.fa-sort {
+	  cursor: pointer;
+	}
+  }
+}
