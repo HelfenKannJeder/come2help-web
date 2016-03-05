@@ -20,11 +20,13 @@
 		<th>{{ 'Abilities' | translate }}</th>
 	</tr>
 	<tr ng-repeat="volunteer in ctrl.displayedVolunteers">
-		<td>{{volunteer.givenName}}</td>
-		<td>{{volunteer.surname}}</td>
-		<td>{{volunteer.address.zipCode}}</td>
-		<td>{{volunteer.phone}}</td>
-		<td>{{volunteer.email}}</td>
-		<td>{{volunteer.abilities}}</td>
+		<td>{{volunteer.user.givenName}}</td>
+		<td>{{volunteer.user.surname}}</td>
+		<td>{{volunteer.user.address.zipCode}}</td>
+		<td>{{volunteer.user.phone}}</td>
+		<td>{{volunteer.user.email}}</td>
+		<td><ul>
+			<li ng-repeat="ability in volunteer.abilities">{{ability.name}}</li>
+		</ul></td>
 	</tr>
 </table>

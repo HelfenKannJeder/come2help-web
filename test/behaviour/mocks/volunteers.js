@@ -6,12 +6,14 @@ module.exports = [
 		},
 		response: {
 			data: [{
-				id: 1,
-				givenName: 'Max 1',
-				surname: 'Mustermann 1',
-				address: {zipCode: '76133'},
-				phone: '01234 567890',
-				adult: true,
+				user: {
+					id: 1,
+					givenName: 'Max 1',
+					surname: 'Mustermann 1',
+					address: {zipCode: '76133'},
+					phone: '01234 567890',
+					adult: true
+				},
 				abilities: []
 			}, {
 				id: 1,
@@ -29,26 +31,30 @@ module.exports = [
 			path: '/volunteers',
 			method: 'POST',
 			data: {
-				givenName: 'Max',
-				surname: 'Mustermann',
-				address: {
-					zipCode: '76187'
-				},
-				phone: '0157812312335',
-				adult: true
+				user: {
+					givenName: 'Max',
+					surname: 'Mustermann',
+					address: {
+						zipCode: '76187'
+					},
+					phone: '0157812312335',
+					adult: true
+				}
 			}
 		},
 		response: {
 			status: 200,
 			data: [{
-				id: 42,
-				givenName: 'Max',
-				surname: 'Mustermann',
-				address: {
-					zipCode: '76187'
-				},
-				phone: '0157812312335',
-				adult: true
+				user: {
+					id: 42,
+					givenName: 'Max',
+					surname: 'Mustermann',
+					address: {
+						zipCode: '76187'
+					},
+					phone: '0157812312335',
+					adult: true
+				}
 			}]
 		}
 	},
@@ -57,13 +63,15 @@ module.exports = [
 			path: '/volunteers',
 			method: 'POST',
 			data: {
-				givenName: 'Max',
-				surname: 'Mustermann',
-				address: {
-					zipCode: '76187'
-				},
-				phone: '0157812312335',
-				adult: false
+				user: {
+					givenName: 'Max',
+					surname: 'Mustermann',
+					address: {
+						zipCode: '76187'
+					},
+					phone: '0157812312335',
+					adult: false
+				}
 			}
 		},
 		response: {

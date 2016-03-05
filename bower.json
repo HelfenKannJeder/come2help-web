@@ -23,6 +23,9 @@
 		"lodash": "~3.10.1",
 		"bootstrap": "~3.3.5",
 		"angular-google-maps": "~2.2.1",
+		"satellizer": "~0.13.1",
+		"bootstrap-social": "~4.11.0",
+		"font-awesome": "~4.5.0",
         "angular-smart-table": "~2.1.5"
 	},
 	"resolutions": {

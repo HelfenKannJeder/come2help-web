@@ -9,5 +9,6 @@ module.exports = function() {
 	var chai = require('chai');
 	var chaiAsPromised = require('chai-as-promised');
 	chai.use(chaiAsPromised);
+	chai.use(require('chai-properties'));
 	global.expect = chai.expect;
 };

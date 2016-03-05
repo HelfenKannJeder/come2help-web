@@ -1,7 +1,3 @@
-angular.module('Come2HelpController').factory('Volunteers', ['$resource', function ($resource) {
-	return $resource('api/volunteers/:id');
-}]);
-
 angular.module('Come2HelpController').controller('VolunteerListController', ['Volunteers', 'geocoder', function (Volunteers, geocoder) {
 	var vm = this;
 
